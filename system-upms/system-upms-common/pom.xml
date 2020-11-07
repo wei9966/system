@@ -11,11 +11,33 @@
 
     <artifactId>system-upms-common</artifactId>
     <dependencies>
+        <!--<dependency>-->
+            <!--<groupId>com.qs.insurance</groupId>-->
+            <!--<artifactId>system-common</artifactId>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>com.qs.insurance</groupId>
-            <artifactId>system-common</artifactId>
-            <version>0.0.1</version>
+            <artifactId>system-common-nacos</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.qs.insurance</groupId>
+            <artifactId>system-common-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.qs.insurance</groupId>
+            <artifactId>system-common-data</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.qs.insurance</groupId>
+            <artifactId>system-common-swagger</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.qs.insurance</groupId>
+            <artifactId>system-common-log</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.qs.insurance</groupId>
+            <artifactId>system-common-dynamic-gateway</artifactId>
         </dependency>
     </dependencies>
-
 </project>

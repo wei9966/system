@@ -17,10 +17,6 @@
             <groupId>com.qs.insurance</groupId>
             <artifactId>system-common-gateway</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.qs.insurance</groupId>
-            <artifactId>system-common-nacos</artifactId>
-        </dependency>
     </dependencies>
     <build>
         <plugins>

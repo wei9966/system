@@ -149,6 +149,11 @@
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.qs.insurance</groupId>
+                <artifactId>system-common</artifactId>
+                <version>${qs.version}</version>
+            </dependency>
             <!--<dependency>-->
             <!--<groupId>com.rongda</groupId>-->
             <!--<artifactId>system-common-websocket</artifactId>-->

@@ -13,7 +13,7 @@
     <dependencies>
         <dependency>
             <groupId>com.qs.insurance</groupId>
-            <artifactId>system-common</artifactId>
+            <artifactId>system-upms-common</artifactId>
             <version>0.0.1</version>
         </dependency>
         <dependency>

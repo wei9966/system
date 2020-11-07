@@ -19,35 +19,4 @@
         <module>system-upms-service</module>
         <module>system-upms-server</module>
     </modules>
-    <dependencies>
-        <dependency>
-            <groupId>com.qs.insurance</groupId>
-            <artifactId>system-common-data</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.qs.insurance</groupId>
-            <artifactId>system-common-log</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.qs.insurance</groupId>
-            <artifactId>system-common-swagger</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.qs.insurance</groupId>
-            <artifactId>system-common-dynamic-gateway</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.qs.insurance</groupId>
-            <artifactId>system-common-nacos</artifactId>
-        </dependency>
-    </dependencies>
-    <build>
-        <finalName>${project.name}</finalName>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
-    </build>
 </project>
