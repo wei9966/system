@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>system</artifactId>
+        <groupId>com.qs.insurance</groupId>
+        <version>0.0.1</version>
+    </parent>
+    <artifactId>system-common</artifactId>
+    <packaging>pom</packaging>
+    <description>公共依赖</description>
+    <modules>
+        <module>system-common-bom</module>
+        <module>system-common-core</module>
+        <module>system-common-data</module>
+        <module>system-common-dynamic-gateway</module>
+        <module>system-common-gateway</module>
+        <module>system-common-log</module>
+        <module>system-common-schedule</module>
+        <module>system-common-swagger</module>
+        <module>system-common-transaction</module>
+        <module>system-common-nacos</module>
+        <module>system-common-security</module>
+    </modules>
+
+</project>

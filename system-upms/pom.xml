@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>system</artifactId>
+        <groupId>com.qs.insurance</groupId>
+        <version>0.0.1</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>system-upms</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>system-upms-common</module>
+        <module>system-upms-api</module>
+        <module>system-upms-client</module>
+        <module>system-upms-dao</module>
+        <module>system-upms-service</module>
+        <module>system-upms-server</module>
+    </modules>
+    <dependencies>
+        <dependency>
+            <groupId>com.qs.insurance</groupId>
+            <artifactId>system-common-data</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.qs.insurance</groupId>
+            <artifactId>system-common-log</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.qs.insurance</groupId>
+            <artifactId>system-common-swagger</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.qs.insurance</groupId>
+            <artifactId>system-common-dynamic-gateway</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.qs.insurance</groupId>
+            <artifactId>system-common-nacos</artifactId>
+        </dependency>
+    </dependencies>
+    <build>
+        <finalName>${project.name}</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+    </build>
+</project>

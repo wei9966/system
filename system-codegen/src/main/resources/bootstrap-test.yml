@@ -1,0 +1,30 @@
+server:
+  port: 12130
+spring:
+  application:
+    name: '@artifactId@'
+  #配置中心
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.1.94:8848
+        namespace: '@test.namespace@'
+        register-enabled: true
+      config:
+        server-addr: 192.168.1.94:8848
+        prefix: '@artifactId@'
+        file-extension: yml
+        namespace: '@test.namespace@'
+        group: '@test.group@'
+        shared-dataids: system-config.yml
+        refreshable-dataids: system-config.yml
+  main:
+    allow-bean-definition-overriding: true
+logging:
+  level:
+    root: info
+  profiles:
+    active: test
+
+
+

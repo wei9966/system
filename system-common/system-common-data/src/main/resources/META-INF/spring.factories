@@ -1,0 +1,9 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+    com.qs.insurance.system.common.data.cache.RedisTemplateConfig,\
+    com.qs.insurance.system.common.data.cache.RedisCacheManagerConfig,\
+    com.qs.insurance.system.common.data.cache.RedisCacheAutoConfiguration,\
+    com.qs.insurance.system.common.data.tenant.MqmcTenantConfigProperties,\
+    com.qs.insurance.system.common.data.tenant.TenantContextHolderFilter,\
+    com.qs.insurance.system.common.data.tenant.MqmcFeignTenantConfiguration,\
+    com.qs.insurance.system.common.data.mybatis.MyMetaObjectHandler,\
+    com.qs.insurance.system.common.data.mybatis.MybatisPlusConfig

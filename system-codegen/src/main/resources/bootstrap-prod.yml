@@ -1,0 +1,30 @@
+server:
+  port: 12130
+spring:
+  application:
+    name: @artifactId@
+  #配置中心
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: @prod.namespace@
+        register-enabled: true
+      config:
+        server-addr: 127.0.0.1:8848
+        prefix: @artifactId@
+        file-extension: yml
+        namespace: @prod.namespace@
+        group: @prod.group@
+        shared-dataids: system-config.yml
+        refreshable-dataids: system-config.yml
+  main:
+    allow-bean-definition-overriding: true
+logging:
+  level:
+    root: info
+  profiles:
+    active: prod
+
+
+

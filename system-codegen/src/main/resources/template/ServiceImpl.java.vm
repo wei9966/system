@@ -1,0 +1,20 @@
+package ${package}.service.impl;
+
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import ${package}.model.${className};
+import ${package}.dao.${className}Mapper;
+import ${package}.service.${className}Service;
+import org.springframework.stereotype.Service;
+import lombok.AllArgsConstructor;
+
+/**
+ * ${comments}
+ *
+ * @author ${author}
+ * @date ${datetime}
+ */
+@Service("${classname}Service")
+@AllArgsConstructor
+public class ${className}ServiceImpl extends ServiceImpl<${className}Mapper, ${className}> implements ${className}Service {
+    private final ${className}Mapper ${classname}Mapper;
+}

@@ -1,0 +1,67 @@
+package ${package}.model;
+
+import com.baomidou.mybatisplus.annotation.*;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import org.springframework.format.annotation.DateTimeFormat;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.Serializable;
+import java.util.Date;
+#if(${hasBigDecimal})
+import java.math.BigDecimal;
+#end
+
+/**
+ * ${comments}
+ *
+ * @author ${author}
+ * @date ${datetime}
+ */
+@Data
+@TableName("${tableName}")
+@EqualsAndHashCode(callSuper = true)
+public class ${className} extends Model<${className}> {
+private static final long serialVersionUID=1L;
+
+#set ($modelPrepertyHidden = false)
+#foreach ($column in $columns)
+/**
+ * $column.comments
+ */
+    #if($column.columnName == $pk.columnName)
+    @TableId
+    #end
+    #if($column.columnName == "is_deleted")
+    @TableLogic
+    #end
+    #if($column.columnName == "create_user_id" ||
+        $column.columnName == "create_user_name" ||
+        $column.columnName == "create_time" ||
+        $column.columnName == "is_deleted" ||
+        $column.columnName == "is_use" ||
+        $column.columnName == "org_id" ||
+        $column.columnName == "org_name" ||
+        $column.columnName == "area_code")
+    @TableField(fill = FieldFill.INSERT)
+        #set ($modelPrepertyHidden = true)
+    #end
+    #if($column.columnName == "update_user_id" ||
+        $column.columnName == "update_user_name" ||
+        $column.columnName == "update_time")
+    @TableField(fill = FieldFill.UPDATE)
+        #set ($modelPrepertyHidden = true)
+    #end
+@ApiModelProperty(hidden = $modelPrepertyHidden, value = "$column.comments")
+private $column.attrType $column.lowerAttrName;
+#end
+
+/**
+ * 主键值
+ */
+@Override
+protected Serializable pkVal(){
+        return this.$pk.lowerAttrName;
+        }
+}
