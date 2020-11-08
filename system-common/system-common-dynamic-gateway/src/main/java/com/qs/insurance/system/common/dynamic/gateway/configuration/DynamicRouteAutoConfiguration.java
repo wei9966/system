@@ -7,9 +7,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @author jhy
- * @date 2020/4/28
- * <p>
  * 动态路由配置类
  */
 @Configuration

@@ -35,17 +35,9 @@ public class SwaggerProvider implements SwaggerResourcesProvider {
         List<RouteDefinition> routes = new ArrayList<>();
         routeDefinitionRepository.getRouteDefinitions().subscribe(route -> routes.add(route));
         routes.forEach(routeDefinition -> routeDefinition.getPredicates().stream()
-                .filter(predicateDefinition -> filterIgnorePropertiesConfig.getGatewayPrefix().equals(((RouteDefinitionVo) routeDefinition).getGatewayPrefix()) ||
-                        SecurityConstants.DEFAULT_GATEWAY_PREFIX.equals(((RouteDefinitionVo) routeDefinition).getGatewayPrefix()) ||
-                        SecurityConstants.DEFAULT_GATEWAY_PREFIX_IH.equals(((RouteDefinitionVo) routeDefinition).getGatewayPrefix()) ||
-                        SecurityConstants.DEFAULT_GATEWAY_PREFIX_CGHIS.equals(((RouteDefinitionVo) routeDefinition).getGatewayPrefix()))
-
-                .filter(predicateDefinition -> "Path".equalsIgnoreCase(predicateDefinition.getName()))
-                .filter(predicateDefinition -> !filterIgnorePropertiesConfig.getSwaggerProviders().contains(routeDefinition.getId()))
                 .forEach(predicateDefinition -> resources.add(swaggerResource(routeDefinition.getId(),
                         predicateDefinition.getArgs().get(NameUtils.GENERATED_NAME_PREFIX + "0")
                                 .replace("/**", API_URI)))));
-
         return resources.stream().sorted(Comparator.comparing(SwaggerResource::getName))
                 .collect(Collectors.toList());
     }
