@@ -4,7 +4,6 @@ import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSON;
 import cn.hutool.json.JSONUtil;
-import feign.form.util.CharsetUtil;
 
 /**
  * @author jhy
@@ -50,7 +49,7 @@ public class ZgxApiUtils {
         getSmsUrl.append("&phone=");
         getSmsUrl.append(phone);
         getSmsUrl.append("&content=");
-        getSmsUrl.append(HttpUtil.encode(content, CharsetUtil.UTF_8));
+//        getSmsUrl.append(HttpUtil.encode(content, CharsetUtil.UTF_8));
         String smsStr = HttpRequest.post(getSmsUrl.toString()).execute().body();
         if (smsStr != null){
             JSON json =  JSONUtil.parse(smsStr);

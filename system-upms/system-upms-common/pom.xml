@@ -12,8 +12,8 @@
     <artifactId>system-upms-common</artifactId>
     <dependencies>
         <!--<dependency>-->
-            <!--<groupId>com.qs.insurance</groupId>-->
-            <!--<artifactId>system-common</artifactId>-->
+        <!--<groupId>com.qs.insurance</groupId>-->
+        <!--<artifactId>system-common</artifactId>-->
         <!--</dependency>-->
         <dependency>
             <groupId>com.qs.insurance</groupId>
@@ -34,6 +34,16 @@
         <dependency>
             <groupId>com.qs.insurance</groupId>
             <artifactId>system-common-log</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.security</groupId>
+                    <artifactId>spring-security-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework.security.oauth</groupId>
+                    <artifactId>spring-security-oauth2</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.qs.insurance</groupId>

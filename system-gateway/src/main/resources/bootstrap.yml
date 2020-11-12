@@ -14,9 +14,9 @@ spring:
         refreshable-dataids: system-config.yml
         prefix: @artifactId@
       discovery:
-          server-addr: 47.100.79.206:8848
-          namespace: @dev.namespace@
-          register-enabled: true
+        server-addr: 47.100.79.206:8848
+        namespace: @dev.namespace@
+        register-enabled: true
   main:
     allow-bean-definition-overriding: true
   profiles:

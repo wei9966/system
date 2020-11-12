@@ -18,11 +18,17 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-security</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>spring-boot-starter-security</artifactId>
+                    <groupId>org.springframework.boot</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.security.oauth.boot</groupId>
-            <artifactId>spring-security-oauth2-autoconfigure</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.security.oauth.boot</groupId>-->
+<!--            <artifactId>spring-security-oauth2-autoconfigure</artifactId>-->
+<!--        </dependency>-->
         <!--<dependency>-->
             <!--<groupId>com.rongda</groupId>-->
             <!--<artifactId>system-upms-api</artifactId>-->

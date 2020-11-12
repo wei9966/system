@@ -1,0 +1,24 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: eladmin-activiti
+  datasource:
+    password: 996649855
+    username: root
+    url: jdbc:mysql://localhost:3306/activiti?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT&nullCatalogMeansCurrent=true
+    driver-class-name: com.mysql.jdbc.Driver
+  activiti:
+      database-schema-update: true
+      job-executor-activate: true # asyncExecutorEnabled属性设置设置true后将代替那些老的Job executor
+      history-level: full
+      db-history-used: true
+      check-process-definitions: false # 自动部署验证设置:true-开启（默认）、false-关闭
+logging:
+  level:
+    com.ascendant: debug
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %clr(-%5p)  %clr(${PID:- }){magenta} --- %clr([%15.15t]){faint} %highlight(%-80.80logger{300}){cyan} %clr(:) %m %n%wEx"
+
+swagger:
+  enabled: true
