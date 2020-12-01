@@ -17,23 +17,21 @@ package com.qs.insurance.modules.security.rest;
 
 import cn.hutool.core.util.IdUtil;
 import com.qs.insurance.annotation.AnonymousAccess;
+import com.qs.insurance.annotation.Log;
 import com.qs.insurance.config.RsaProperties;
-import com.qs.insurance.exception.BadRequestException;
+import com.qs.insurance.modules.security.config.SecurityProperties;
+import com.qs.insurance.modules.security.security.TokenProvider;
+import com.qs.insurance.modules.security.service.OnlineUserService;
+import com.qs.insurance.modules.security.service.dto.AuthUserDto;
+import com.qs.insurance.modules.security.service.dto.JwtUserDto;
 import com.qs.insurance.utils.RedisUtils;
 import com.qs.insurance.utils.RsaUtils;
 import com.qs.insurance.utils.SecurityUtils;
-import com.qs.insurance.utils.StringUtils;
 import com.wf.captcha.ArithmeticCaptcha;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import com.qs.insurance.annotation.Log;
-import com.qs.insurance.modules.security.config.SecurityProperties;
-import com.qs.insurance.modules.security.security.TokenProvider;
-import com.qs.insurance.modules.security.service.dto.AuthUserDto;
-import com.qs.insurance.modules.security.service.dto.JwtUserDto;
-import com.qs.insurance.modules.security.service.OnlineUserService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,6 +41,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
@@ -71,22 +70,22 @@ public class AuthorizationController {
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
 
     @Log("用户登录")
-    @ApiOperation("登录授权")
     @AnonymousAccess
+    @ApiOperation("登录授权")
     @PostMapping(value = "/login")
     public ResponseEntity<Object> login(@Validated @RequestBody AuthUserDto authUser, HttpServletRequest request) throws Exception {
         // 密码解密
         String password = RsaUtils.decryptByPrivateKey(RsaProperties.privateKey, authUser.getPassword());
-        // 查询验证码
-        String code = (String) redisUtils.get(authUser.getUuid());
-        // 清除验证码
-        redisUtils.del(authUser.getUuid());
-        if (StringUtils.isBlank(code)) {
-            throw new BadRequestException("验证码不存在或已过期");
-        }
-        if (StringUtils.isBlank(authUser.getCode()) || !authUser.getCode().equalsIgnoreCase(code)) {
-            throw new BadRequestException("验证码错误");
-        }
+//        // 查询验证码
+//        String code = (String) redisUtils.get(authUser.getUuid());
+//        // 清除验证码
+//        redisUtils.del(authUser.getUuid());
+//        if (StringUtils.isBlank(code)) {
+//            throw new BadRequestException("验证码不存在或已过期");
+//        }
+//        if (StringUtils.isBlank(authUser.getCode()) || !authUser.getCode().equalsIgnoreCase(code)) {
+//            throw new BadRequestException("验证码错误");
+//        }
         UsernamePasswordAuthenticationToken authenticationToken =
                 new UsernamePasswordAuthenticationToken(authUser.getUsername(), password);
 
@@ -115,8 +114,8 @@ public class AuthorizationController {
         return ResponseEntity.ok(SecurityUtils.getCurrentUser());
     }
 
-    @AnonymousAccess
     @ApiOperation("获取验证码")
+    @AnonymousAccess
     @GetMapping(value = "/code")
     public ResponseEntity<Object> getCode(){
         // 算术类型 https://gitee.com/whvse/EasyCaptcha

@@ -2,15 +2,17 @@ package com.qs.insurance.system.common.swagger.config;
 
 
 import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
+import springfox.documentation.builders.ParameterBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.schema.ModelRef;
 import springfox.documentation.service.*;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spi.service.contexts.SecurityContext;
@@ -32,6 +34,11 @@ import java.util.List;
 @ConditionalOnProperty(name = "swagger.enabled", matchIfMissing = true)
 public class SwaggerAutoConfiguration {
 
+	@Value("${jwt.header}")
+	private String tokenHeader;
+
+	@Value("${jwt.token-start-with}")
+	private String tokenStartWith;
 	/**
 	 * 	默认的排除路径，排除Spring Boot默认的错误处理路径和端点
 	 */
@@ -61,6 +68,14 @@ public class SwaggerAutoConfiguration {
 		List<Predicate<String>> excludePath = new ArrayList<>();
 		swaggerProperties.getExcludePath().forEach(path -> excludePath.add(PathSelectors.ant(path)));
 
+		ParameterBuilder ticketPar = new ParameterBuilder();
+		List<Parameter> pars = new ArrayList<>();
+		ticketPar.name(tokenHeader).description("token")
+				.modelRef(new ModelRef("string"))
+				.parameterType("header")
+				.defaultValue(tokenStartWith + " ")
+				.required(true)
+				.build();
 		//noinspection Guava
 		return new Docket(DocumentationType.SWAGGER_2)
 				.host(swaggerProperties.getHost())
@@ -69,6 +84,10 @@ public class SwaggerAutoConfiguration {
 //				.paths(Predicates.and(Predicates.not(Predicates.or(excludePath)), Predicates.or(basePath)))
 				.paths(PathSelectors.any())
 				.build()
+//				.securitySchemes(Collections.singletonList(securitySchema()))
+//				.securityContexts(Collections.singletonList(securityContext()))
+				.globalOperationParameters(pars)
+				.host("www.wavab.cn")
 				.pathMapping("/");
 	}
 
@@ -109,6 +128,7 @@ public class SwaggerAutoConfiguration {
 	}
 
 	private ApiInfo apiInfo(SwaggerProperties swaggerProperties) {
+		System.out.println("配置文件"+swaggerProperties);
 		return new ApiInfoBuilder()
 				.title(swaggerProperties.getTitle())
 				.description(swaggerProperties.getDescription())

@@ -29,6 +29,7 @@
         <mysql.connector.version>8.0.13</mysql.connector.version>
         <swagger.core.version>1.5.22</swagger.core.version>
         <qs.version>0.0.1</qs.version>
+        <activiti.version>7.1.0.M1</activiti.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -292,6 +293,19 @@
             <!--<artifactId>system-common-websocket</artifactId>-->
             <!--<version>${mqmc.version}</version>-->
             <!--</dependency>-->
+<!--            activiti依賴-->
+            <dependency>
+                <groupId>org.activiti.dependencies</groupId>
+                <artifactId>activiti-dependencies</artifactId>
+                <version>${activiti.version}</version>
+                <type>pom</type>
+            </dependency>
+
+            <dependency>
+                <groupId>org.activiti</groupId>
+                <artifactId>activiti-spring-boot-starter</artifactId>
+                <version>${activiti.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 </project>

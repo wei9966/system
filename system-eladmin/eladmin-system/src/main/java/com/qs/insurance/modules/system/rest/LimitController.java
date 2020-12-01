@@ -17,7 +17,6 @@ package com.qs.insurance.modules.system.rest;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import com.qs.insurance.annotation.AnonymousAccess;
 import com.qs.insurance.annotation.Limit;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,7 +38,6 @@ public class LimitController {
      * 测试限流注解，下面配置说明该接口 60秒内最多只能访问 10次，保存到redis的键名为 limit_test，
      */
     @GetMapping
-    @AnonymousAccess
     @ApiOperation("测试")
     @Limit(key = "test", period = 60, count = 10, name = "testLimit", prefix = "limit")
     public int test() {

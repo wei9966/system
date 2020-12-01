@@ -14,17 +14,11 @@
             <groupId>com.qs.insurance</groupId>
             <artifactId>system-common-core</artifactId>
         </dependency>
-        <!--安全模块-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-security</artifactId>
-            <exclusions>
-                <exclusion>
-                    <artifactId>spring-boot-starter-security</artifactId>
-                    <groupId>org.springframework.boot</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+<!--        &lt;!&ndash;安全模块&ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-starter-security</artifactId>-->
+<!--        </dependency>-->
 <!--        <dependency>-->
 <!--            <groupId>org.springframework.security.oauth.boot</groupId>-->
 <!--            <artifactId>spring-security-oauth2-autoconfigure</artifactId>-->

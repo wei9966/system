@@ -19,7 +19,6 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import com.qs.insurance.annotation.AnonymousAccess;
 import com.qs.insurance.annotation.Log;
 import com.qs.insurance.domain.vo.TradeVo;
 import com.qs.insurance.domain.AlipayConfig;
@@ -85,7 +84,6 @@ public class AliPayController {
 
     @ApiIgnore
     @GetMapping("/return")
-    @AnonymousAccess
     @ApiOperation("支付之后跳转的链接")
     public ResponseEntity<String> returnPage(HttpServletRequest request, HttpServletResponse response){
         AlipayConfig alipay = alipayService.find();
@@ -108,7 +106,6 @@ public class AliPayController {
 
     @ApiIgnore
     @RequestMapping("/notify")
-    @AnonymousAccess
     @SuppressWarnings("all")
     @ApiOperation("支付异步通知(要公网访问)，接收异步通知，检查通知内容app_id、out_trade_no、total_amount是否与请求中的一致，根据trade_status进行后续业务处理")
     public ResponseEntity<Object> notify(HttpServletRequest request){

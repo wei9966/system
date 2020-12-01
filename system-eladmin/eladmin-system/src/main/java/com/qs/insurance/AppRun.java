@@ -15,7 +15,6 @@
  */
 package com.qs.insurance;
 
-import com.qs.insurance.annotation.AnonymousAccess;
 import com.qs.insurance.utils.SpringContextHolder;
 import com.qs.insurance.system.common.swagger.annotation.EnableMqmcSwagger2;
 import io.swagger.annotations.Api;
@@ -69,7 +68,6 @@ public class AppRun {
      * @return /
      */
     @GetMapping("/")
-    @AnonymousAccess
     public String index() {
         return "Backend service started successfully";
     }
