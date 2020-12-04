@@ -44,6 +44,9 @@
         <dev.group>SYSTEM_DEV</dev.group>
         <test.group>SYSTEM_TEST</test.group>
         <prod.group>SYSTEM_PROD</prod.group>
+        <nacos.dev.addr>47.100.79.206:8848</nacos.dev.addr>
+        <nacos.pron.addr>127.0.0.1:8848</nacos.pron.addr>
+        <nacos.test.addr>47.100.79.206:8848</nacos.test.addr>
     </properties>
 
     <dependencies>

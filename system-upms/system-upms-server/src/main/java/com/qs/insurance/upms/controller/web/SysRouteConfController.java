@@ -3,7 +3,7 @@ package com.qs.insurance.upms.controller.web;
 
 import cn.hutool.json.JSONArray;
 import com.qs.insurance.system.common.core.utils.R;
-import com.qs.insurance.upms.api.SysRouteConfService;
+import com.qs.insurance.upms.service.SysRouteConfService;
 import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

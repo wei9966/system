@@ -14,7 +14,12 @@
         <dependencies>
             <dependency>
                 <groupId>com.qs.insurance</groupId>
-                <artifactId>system-short-message-common</artifactId>
+                <artifactId>system-short-message-dao</artifactId>
+                <version>0.0.1</version>
+            </dependency>
+            <dependency>
+                <groupId>com.qs.insurance</groupId>
+                <artifactId>system-upms-api</artifactId>
                 <version>0.0.1</version>
             </dependency>
         </dependencies>

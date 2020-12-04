@@ -6,15 +6,15 @@ spring:
   cloud:
     nacos:
       config:
-        server-addr: 47.100.79.206:8848
+        server-addr: @nacos.dev.addr@
         file-extension: yml
         namespace: @dev.namespace@
         group: @dev.group@
-        shared-dataids: system-config.yml
-        refreshable-dataids: system-config.yml
+        shared-dataids: system-config.yml,nacos-log-config.yml
+        refreshable-dataids: system-config.yml,nacos-log-config.yml
         prefix: @artifactId@
       discovery:
-        server-addr: 47.100.79.206:8848
+        server-addr: @nacos.dev.addr@
         namespace: @dev.namespace@
         register-enabled: true
   main:

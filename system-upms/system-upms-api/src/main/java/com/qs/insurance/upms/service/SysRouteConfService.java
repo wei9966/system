@@ -1,4 +1,4 @@
-package com.qs.insurance.upms.api;
+package com.qs.insurance.upms.service;
 
 import cn.hutool.json.JSONArray;
 import com.baomidou.mybatisplus.extension.service.IService;

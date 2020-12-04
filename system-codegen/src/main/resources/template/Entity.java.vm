@@ -22,7 +22,7 @@ import java.math.BigDecimal;
 @Data
 @TableName("${tableName}")
 @EqualsAndHashCode(callSuper = true)
-public class ${className} extends Model<${className}> {
+public class ${className} extends Model<${className}> implements Serializable {
 private static final long serialVersionUID=1L;
 
 #set ($modelPrepertyHidden = false)

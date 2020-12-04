@@ -19,10 +19,14 @@ public class ShortMessageController {
     private final ShortMessageService shortMessageService;
     @GetMapping("/login")
     @ApiOperation("登录")
-    public R login(@RequestParam(value = "username",required = false) String username,
-                   @RequestParam(value = "password",required = false)String password){
+    public R login(@RequestParam(value = "username",required = true) String username,
+                   @RequestParam(value = "password",required = true)String password){
+        try {
             this.shortMessageService.login(username,password);
-        return new R<>("登录成功");
+            return new R<>("登录成功");
+        } catch (Exception e) {
+            return new R().error(e.getMessage());
+        }
     }
     /**
      * 批量业务短信余量查询

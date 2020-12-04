@@ -5,7 +5,7 @@
 <mapper namespace="${package}.dao.${className}Mapper">
 
   <!-- 可根据自己的需求，是否要使用 -->
-  <resultMap type="${package}.model.${className}" id="${classname}Map">
+  <resultMap type="${package}.entity.${className}" id="${classname}Map">
     #foreach($column in $columns)
       <result property="${column.lowerAttrName}" column="${column.columnName}"/>
     #end

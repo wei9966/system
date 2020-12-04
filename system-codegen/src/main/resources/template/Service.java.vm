@@ -1,7 +1,7 @@
 package ${package}.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import ${package}.model.${className};
+import ${package}.entity.${className};
 
 /**
  * ${comments}

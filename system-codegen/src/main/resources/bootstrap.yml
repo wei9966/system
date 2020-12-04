@@ -8,11 +8,11 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 47.100.79.206:8848
+        server-addr: @nacos.dev.addr@
         namespace: @dev.namespace@
         register-enabled: true
       config:
-        server-addr: 47.100.79.206:8848
+        server-addr: @nacos.dev.addr@
         prefix: @artifactId@
         file-extension: yml
         namespace: @dev.namespace@

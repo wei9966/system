@@ -1,7 +1,7 @@
 package ${package}.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import ${package}.model.${className};
+import ${package}.entity.${className};
 import ${package}.dao.${className}Mapper;
 import ${package}.service.${className}Service;
 import org.springframework.stereotype.Service;

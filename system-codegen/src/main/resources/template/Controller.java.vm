@@ -2,9 +2,8 @@ package ${package}.controller;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import R;
-import SysLog;
-import ${package}.model.${className};
+import com.qs.insurance.system.common.core.utils.R;
+import ${package}.entity.${className};
 import ${package}.service.${className}Service;
 import lombok.AllArgsConstructor;
 import io.swagger.annotations.Api;
@@ -58,7 +57,6 @@ public class ${className}Controller {
    * @return R
    */
   @ApiOperation("新增${comments}")
-  @SysLog("新增${comments}")
   @PostMapping
   public R save(@RequestBody ${className} ${classname}){
     return new R<>(${classname}Service.save(${classname}));
@@ -70,7 +68,6 @@ public class ${className}Controller {
    * @return R
    */
   @ApiOperation("修改${comments}")
-  @SysLog("修改${comments}")
   @PutMapping
   public R updateById(@RequestBody ${className} ${classname}){
     return new R<>(${classname}Service.updateById(${classname}));
@@ -82,7 +79,6 @@ public class ${className}Controller {
    * @return R
    */
   @ApiOperation("删除${comments}")
-  @SysLog("删除${comments}")
   @DeleteMapping("/{${pk.lowerAttrName}}")
   public R removeById(@PathVariable ${pk.attrType} ${pk.lowerAttrName}){
     return new R<>(${classname}Service.removeById(${pk.lowerAttrName}));

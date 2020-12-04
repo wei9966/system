@@ -5,7 +5,7 @@ import cn.hutool.json.JSONUtil;
 import com.qs.insurance.system.common.core.constant.CommonConstants;
 import com.qs.insurance.system.common.dynamic.gateway.support.DynamicRouteInitEvent;
 import com.qs.insurance.system.common.dynamic.gateway.vo.RouteDefinitionVo;
-import com.qs.insurance.upms.api.SysRouteConfService;
+import com.qs.insurance.upms.service.SysRouteConfService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.web.context.WebServerInitializedEvent;

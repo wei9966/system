@@ -17,6 +17,7 @@
         <module>system-short-message-client</module>
         <module>system-short-message-service</module>
         <module>system-short-message-api</module>
+        <module>system-short-message-dao</module>
     </modules>
 
 

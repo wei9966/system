@@ -11,7 +11,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * @author WB
  */
 @SpringBootApplication
-@EnableFeignClients
+@EnableFeignClients(basePackages = "com.qs.insurance")
 @EnableDiscoveryClient
 @EnableMqmcSwagger2
 public class SystemUpmsApplication {
