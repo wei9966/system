@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>system</artifactId>
+        <groupId>com.qs.insurance</groupId>
+        <version>0.0.1</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>system-auth</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>com.qs.insurance</groupId>
+            <artifactId>system-upms-api</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.qs.insurance</groupId>
+            <artifactId>system-common-security</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>
