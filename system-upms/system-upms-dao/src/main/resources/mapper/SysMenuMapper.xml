@@ -17,4 +17,12 @@
     <!--@mbg.generated-->
     menu_id, parent_id, `name`, url, perms, `type`, icon, order_num
   </sql>
+
+  <select id="queryListParentId" resultType="com.qs.insurance.upms.entity.SysMenu">
+		select * from sys_menu where parent_id = #{parentId} order by order_num asc
+	</select>
+
+  <select id="queryNotButtonList" resultType="com.qs.insurance.upms.entity.SysMenu">
+		select * from sys_menu where type != 2 order by order_num asc
+	</select>
 </mapper>

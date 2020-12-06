@@ -13,4 +13,7 @@
     <!--@mbg.generated-->
     user_id, token, expire_time, update_time
   </sql>
+  <select id="queryByToken" resultType="com.qs.insurance.upms.entity.SysUserToken">
+		select * from sys_user_token where token = #{value}
+	</select>
 </mapper>

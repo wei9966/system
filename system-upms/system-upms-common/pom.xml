@@ -33,6 +33,24 @@
         </dependency>
         <dependency>
             <groupId>com.qs.insurance</groupId>
+            <artifactId>system-common-security</artifactId>
+            <exclusions>
+                <exclusion>
+                        <groupId>com.qs.insurance</groupId>
+                        <artifactId>system-upms-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.qs.insurance</groupId>
+                    <artifactId>system-upms-dao</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.qs.insurance</groupId>
+                    <artifactId>system-upms-common</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.qs.insurance</groupId>
             <artifactId>system-common-log</artifactId>
             <exclusions>
                 <exclusion>
@@ -48,6 +66,12 @@
         <dependency>
             <groupId>com.qs.insurance</groupId>
             <artifactId>system-common-dynamic-gateway</artifactId>
+        </dependency>
+<!--shrio-->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.5</version>
         </dependency>
     </dependencies>
 </project>

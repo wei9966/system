@@ -14,6 +14,7 @@ import com.qs.insurance.message.service.ShortMessageContentService;
 import com.qs.insurance.message.service.ShortMessageLoginRecordService;
 import com.qs.insurance.message.service.ShortMessageService;
 import com.qs.insurance.system.common.core.utils.R;
+import com.qs.insurance.upms.entity.SystemUser;
 import com.qs.insurance.upms.feign.SystemUserFeignService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -40,9 +41,9 @@ public class ShortMessageServiceImpl extends ServiceImpl<ShortMessageRecordDao, 
         //登录先走我们的逻辑登录，再走远程的
         try {
             R in = systemUserFeignService.in(username, password);
+            SystemUser systemUser=(SystemUser) in.getData();
             HashMap<String, String> signIn = this.getHeadMap("signIn");
-
-            ShortMessageRecord shortMessageRecord = this.checkFirstLoginAndSave(shortMessageConfig.getUsername());
+            ShortMessageRecord shortMessageRecord = this.checkFirstLoginAndSave(username);
             if (Optional.ofNullable(shortMessageRecord).isPresent()){
                 if (shortMessageRecord.getPhoneNumber().equals(signIn.get("uPhoneNo"))){
                     result = HttpUtil.get(this.getUrl(signIn));

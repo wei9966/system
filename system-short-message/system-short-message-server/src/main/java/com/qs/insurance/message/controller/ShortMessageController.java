@@ -19,8 +19,8 @@ public class ShortMessageController {
     private final ShortMessageService shortMessageService;
     @GetMapping("/login")
     @ApiOperation("登录")
-    public R login(@RequestParam(value = "username",required = true) String username,
-                   @RequestParam(value = "password",required = true)String password){
+    public R login(@RequestParam(value = "username") String username,
+                   @RequestParam(value = "password")String password){
         try {
             this.shortMessageService.login(username,password);
             return new R<>("登录成功");
