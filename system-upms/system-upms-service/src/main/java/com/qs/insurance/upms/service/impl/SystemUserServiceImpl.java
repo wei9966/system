@@ -30,7 +30,6 @@ public class SystemUserServiceImpl extends ServiceImpl<SystemUserMapper, SystemU
         LambdaQueryWrapper<SystemUser> lambda = Wrappers.<SystemUser>query().lambda();
         lambda.eq(SystemUser::getName,username).or().eq(SystemUser::getPhone,username);
         //登錄功能
-//        SystemUser systemUser=this.systemUserMapper.queryByMobile(username);
         SystemUser systemUser = this.getOne(lambda);
         if (!Optional.ofNullable(systemUser).isPresent()){
             throw new RuntimeException("账号或手机号不存在");

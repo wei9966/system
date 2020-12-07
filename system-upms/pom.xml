@@ -18,5 +18,6 @@
         <module>system-upms-dao</module>
         <module>system-upms-service</module>
         <module>system-upms-server</module>
+        <module>system-upms-model</module>
     </modules>
 </project>

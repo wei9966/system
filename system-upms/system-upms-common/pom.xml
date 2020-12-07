@@ -11,10 +11,6 @@
 
     <artifactId>system-upms-common</artifactId>
     <dependencies>
-        <!--<dependency>-->
-        <!--<groupId>com.qs.insurance</groupId>-->
-        <!--<artifactId>system-common</artifactId>-->
-        <!--</dependency>-->
         <dependency>
             <groupId>com.qs.insurance</groupId>
             <artifactId>system-common-nacos</artifactId>
@@ -22,32 +18,6 @@
         <dependency>
             <groupId>com.qs.insurance</groupId>
             <artifactId>system-common-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.qs.insurance</groupId>
-            <artifactId>system-common-data</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.qs.insurance</groupId>
-            <artifactId>system-common-swagger</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.qs.insurance</groupId>
-            <artifactId>system-common-security</artifactId>
-            <exclusions>
-                <exclusion>
-                        <groupId>com.qs.insurance</groupId>
-                        <artifactId>system-upms-api</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.qs.insurance</groupId>
-                    <artifactId>system-upms-dao</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.qs.insurance</groupId>
-                    <artifactId>system-upms-common</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.qs.insurance</groupId>
@@ -67,6 +37,7 @@
             <groupId>com.qs.insurance</groupId>
             <artifactId>system-common-dynamic-gateway</artifactId>
         </dependency>
+
 <!--shrio-->
         <dependency>
             <groupId>com.google.code.gson</groupId>

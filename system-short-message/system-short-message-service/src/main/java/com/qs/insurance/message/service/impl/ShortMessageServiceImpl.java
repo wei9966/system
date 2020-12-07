@@ -6,16 +6,15 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.qs.insurance.message.config.ShortMessageConfig;
 import com.qs.insurance.message.constant.ShortMessageRedisConstant;
-import com.qs.insurance.message.dao.ShortMessageRecordDao;
+import com.qs.insurance.message.dao.ShortMessageMapper;
+import com.qs.insurance.message.entity.ShortMessage;
 import com.qs.insurance.message.entity.ShortMessageContent;
 import com.qs.insurance.message.entity.ShortMessageLoginRecord;
-import com.qs.insurance.message.entity.ShortMessageRecord;
 import com.qs.insurance.message.service.ShortMessageContentService;
 import com.qs.insurance.message.service.ShortMessageLoginRecordService;
 import com.qs.insurance.message.service.ShortMessageService;
-import com.qs.insurance.system.common.core.utils.R;
-import com.qs.insurance.upms.entity.SystemUser;
-import com.qs.insurance.upms.feign.SystemUserFeignService;
+import com.qs.insurance.system.common.core.utils.MapUtils;
+import com.qs.insurance.system.common.security.utils.AppSecurityUtils;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -28,35 +27,34 @@ import java.util.Optional;
 @Service("shortMessageServiceImpl")
 @AllArgsConstructor
 @Slf4j
-public class ShortMessageServiceImpl extends ServiceImpl<ShortMessageRecordDao, ShortMessageRecord> implements ShortMessageService {
-    private ShortMessageRecordDao shortMessageRecordDao;
+public class ShortMessageServiceImpl extends ServiceImpl<ShortMessageMapper, ShortMessage> implements ShortMessageService {
+    private ShortMessageMapper shortMessageMapper;
     private final ShortMessageConfig shortMessageConfig;
     private final StringRedisTemplate stringRedisTemplate;
     private final ShortMessageLoginRecordService shortMessageLoginRecordService;
     private final ShortMessageContentService shortMessageContentService;
-    private final SystemUserFeignService systemUserFeignService;
+
     @Override
-    public String login(String username, String password) {
-        String result = null;
+    public Map login(String username, String password) {
+        MapUtils mapUtils = new MapUtils();
+        String result=null;
         //登录先走我们的逻辑登录，再走远程的
         try {
-            R in = systemUserFeignService.in(username, password);
-            SystemUser systemUser=(SystemUser) in.getData();
-            HashMap<String, String> signIn = this.getHeadMap("signIn");
-            ShortMessageRecord shortMessageRecord = this.checkFirstLoginAndSave(username);
+            ShortMessage shortMessageRecord = this.checkFirstLoginAndSave(username);
             if (Optional.ofNullable(shortMessageRecord).isPresent()){
+                HashMap<String, String> signIn = this.getHeadMap("signIn");
                 if (shortMessageRecord.getPhoneNumber().equals(signIn.get("uPhoneNo"))){
-                    result = HttpUtil.get(this.getUrl(signIn));
-                }else{
-                    signIn.put("uPhoneNo", username);
-                    signIn.put("uPassword", password);
                     result = HttpUtil.get(this.getUrl(signIn));
                 }
             }else{
                 //保存起来
-                shortMessageRecord=new ShortMessageRecord();
+                HashMap<String, String> signIn =new HashMap<>();;
+                signIn.put("code","signIn");
+                shortMessageRecord=new ShortMessage();
                 shortMessageRecord.setPhoneNumber(username);
-                this.shortMessageRecordDao.insert(shortMessageRecord);
+                shortMessageRecord.setPassword(password);
+                shortMessageRecord.setUserId(AppSecurityUtils.getUserId());
+                this.shortMessageMapper.insert(shortMessageRecord);
                 //緩存redis,暂时只能使用我的短信业务
                 signIn.put("uPhoneNo", username);
                 signIn.put("uPassword", password);
@@ -71,8 +69,7 @@ public class ShortMessageServiceImpl extends ServiceImpl<ShortMessageRecordDao, 
         } catch (Exception e) {
             throw new RuntimeException("登录失败，用户名或密码错误");
         }
-
-        return result;
+        return mapUtils.put("result",result);
     }
 
     @Override
@@ -101,7 +98,7 @@ public class ShortMessageServiceImpl extends ServiceImpl<ShortMessageRecordDao, 
         if (!Optional.ofNullable(one).isPresent()){
             shortMessageContent.setPhoneNum(result);
             shortMessageContent.setProjectName(projectName);
-            shortMessageContent.setMessageId(this.shortMessageRecordDao.selectOne(Wrappers.<ShortMessageRecord>query().lambda().eq(ShortMessageRecord::getPhoneNumber, shortMessageConfig.getUsername())).getId());
+            shortMessageContent.setMessageId(this.shortMessageMapper.selectOne(Wrappers.<ShortMessage>query().lambda().eq(ShortMessage::getPhoneNumber, shortMessageConfig.getUsername())).getId());
             shortMessageContentService.save(shortMessageContent);
         }else{
              shortMessageContent=one;
@@ -126,7 +123,6 @@ public class ShortMessageServiceImpl extends ServiceImpl<ShortMessageRecordDao, 
             content.setCodeContent(result);
             this.shortMessageContentService.updateById(content);
         }
-
         log.info("获取短信具体内容结果" + headMap.get("projName") + result);
         return result;
     }
@@ -145,18 +141,19 @@ public class ShortMessageServiceImpl extends ServiceImpl<ShortMessageRecordDao, 
      * @return map对象
      */
     private HashMap<String, String> getHeadMap(String code) {
+        ShortMessage shortMessage = this.getOne(Wrappers.<ShortMessage>query().lambda().eq(ShortMessage::getUserId, AppSecurityUtils.getUserId()));
         HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put("code", code);
-        hashMap.put("uPhoneNo", shortMessageConfig.getUsername());
-        hashMap.put("uPassword", shortMessageConfig.getPassword());
+        hashMap.put("uPhoneNo", shortMessage.getPhoneNumber());
+        hashMap.put("uPassword", shortMessage.getPassword());
         return hashMap;
     }
 
 
-    private ShortMessageRecord checkFirstLoginAndSave(String phone) {
-        LambdaQueryWrapper<ShortMessageRecord> lambda = Wrappers.<ShortMessageRecord>query().lambda();
-        lambda.eq(ShortMessageRecord::getPhoneNumber, phone);
-        ShortMessageRecord shortMessageRecord = this.shortMessageRecordDao.selectOne(lambda);
+    private ShortMessage checkFirstLoginAndSave(String phone) {
+        LambdaQueryWrapper<ShortMessage> lambda = Wrappers.<ShortMessage>query().lambda();
+        lambda.eq(ShortMessage::getPhoneNumber, phone);
+        ShortMessage shortMessageRecord = this.shortMessageMapper.selectOne(lambda);
         if (Optional.ofNullable(shortMessageRecord).isPresent()){
             return  shortMessageRecord;
         }

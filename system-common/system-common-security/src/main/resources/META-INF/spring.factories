@@ -1,0 +1,5 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  org.springframework.cloud.openfeign.MqmcHystrixFeignTargeterConfiguration,\
+  com.qs.insurance.system.common.security.config.ShiroConfig,\
+  com.qs.insurance.system.common.security.security.oauth2.OAuth2Realm,\
+  com.qs.insurance.system.common.security.config.FilterConfig

@@ -1,0 +1,23 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: @artifactId@
+  cloud:
+    nacos:
+      config:
+        server-addr: @nacos.dev.addr@
+        file-extension: yml
+        namespace: @dev.namespace@
+        group: @dev.group@
+        shared-dataids: system-config.yml,nacos-log-config.yml
+        refreshable-dataids: system-config.yml,nacos-log-config.yml
+        prefix: @artifactId@
+      discovery:
+          server-addr: @nacos.dev.addr@
+          namespace: @dev.namespace@
+          register-enabled: true
+  main:
+    allow-bean-definition-overriding: true
+server:
+  port: 12030

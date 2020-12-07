@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qs.insurance.message.dao.ShortMessageMapper">
+
+    <resultMap type="com.qs.insurance.message.entity.ShortMessage" id="ShortMessageRecordMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="phoneNumber" column="phone_number" jdbcType="VARCHAR"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="isUse" column="is_use" jdbcType="INTEGER"/>
+        <result property="isDeleted" column="is_deleted"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+</mapper>

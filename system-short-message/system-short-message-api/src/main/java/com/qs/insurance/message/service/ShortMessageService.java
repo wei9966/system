@@ -1,7 +1,9 @@
 package com.qs.insurance.message.service;
 
+import java.util.Map;
+
 public interface ShortMessageService {
-    String login(String username, String password);
+    Map login(String username, String password);
 
     String getMessageBalance();
 

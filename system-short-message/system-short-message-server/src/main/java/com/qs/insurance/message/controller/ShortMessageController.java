@@ -22,8 +22,7 @@ public class ShortMessageController {
     public R login(@RequestParam(value = "username") String username,
                    @RequestParam(value = "password")String password){
         try {
-            this.shortMessageService.login(username,password);
-            return new R<>("登录成功");
+            return new R<>(this.shortMessageService.login(username,password));
         } catch (Exception e) {
             return new R().error(e.getMessage());
         }

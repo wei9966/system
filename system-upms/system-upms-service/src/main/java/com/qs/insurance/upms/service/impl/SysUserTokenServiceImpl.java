@@ -11,9 +11,9 @@ package com.qs.insurance.upms.service.impl;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.qs.insurance.system.common.core.utils.MapUtils;
 import com.qs.insurance.system.common.core.utils.R;
+import com.qs.insurance.upms.common.utils.TokenGenerator;
 import com.qs.insurance.upms.dao.SysUserTokenMapper;
 import com.qs.insurance.upms.entity.SysUserToken;
-import com.qs.insurance.upms.oauth2.TokenGenerator;
 import com.qs.insurance.upms.service.SysUserTokenService;
 import org.springframework.stereotype.Service;
 

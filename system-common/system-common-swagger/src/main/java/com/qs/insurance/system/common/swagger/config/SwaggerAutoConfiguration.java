@@ -70,12 +70,13 @@ public class SwaggerAutoConfiguration {
 
 		ParameterBuilder ticketPar = new ParameterBuilder();
 		List<Parameter> pars = new ArrayList<>();
-		ticketPar.name(tokenHeader).description("token")
+		ticketPar.name("token").description("token")
 				.modelRef(new ModelRef("string"))
 				.parameterType("header")
 				.defaultValue(tokenStartWith + " ")
 				.required(true)
 				.build();
+		pars.add(ticketPar.build());
 		//noinspection Guava
 		return new Docket(DocumentationType.SWAGGER_2)
 				.host(swaggerProperties.getHost())
