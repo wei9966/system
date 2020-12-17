@@ -28,15 +28,18 @@ public class ${className}Controller {
   private final  ${className}Service ${classname}Service;
 
   /**
-   * 分页查询
-   * @param page 分页对象
+   * 分页查询${comments}
+   * @param pageNo 分页数量
    * @param ${classname} ${comments}
    * @return
    */
   @ApiOperation("分页查询${comments}")
   @GetMapping("/page")
-  public R get${className}Page(Page page, ${className} ${classname}) {
-    return  new R<>(${classname}Service.page(page,Wrappers.query(${classname})));
+  public R get${className}Page(@ApiParam("当前页数") @RequestParam("pageNo") Integer pageNo,
+                               @ApiParam("每页显示条数")@RequestParam("pageSize")Integer pageSize) {
+    Page<${className}> ${classname}Page = new Page<>(pageNo, pageSize);
+    LambdaQueryWrapper<${className}> ${classname}Wrapper = Wrappers.<${className}>query().lambda();
+    return  new R<>(${classname}Service.page(${classname}Page,${classname}Wrapper));
   }
 
 
@@ -46,7 +49,7 @@ public class ${className}Controller {
    * @return R
    */
   @ApiOperation("通过id查询${comments}")
-  @GetMapping("/{${pk.lowerAttrName}}")
+  @GetMapping("/info/{${pk.lowerAttrName}}")
   public R getById(@PathVariable("${pk.lowerAttrName}") ${pk.attrType} ${pk.lowerAttrName}){
     return new R<>(${classname}Service.getById(${pk.lowerAttrName}));
   }
@@ -57,7 +60,7 @@ public class ${className}Controller {
    * @return R
    */
   @ApiOperation("新增${comments}")
-  @PostMapping
+  @PostMapping("/save")
   public R save(@RequestBody ${className} ${classname}){
     return new R<>(${classname}Service.save(${classname}));
   }
@@ -68,20 +71,18 @@ public class ${className}Controller {
    * @return R
    */
   @ApiOperation("修改${comments}")
-  @PutMapping
+  @PostMapping("/update")
   public R updateById(@RequestBody ${className} ${classname}){
     return new R<>(${classname}Service.updateById(${classname}));
   }
 
   /**
-   * 通过id删除${comments}
-   * @param ${pk.lowerAttrName} id
+   * 通过ids删除${comments}
    * @return R
    */
-  @ApiOperation("删除${comments}")
-  @DeleteMapping("/{${pk.lowerAttrName}}")
-  public R removeById(@PathVariable ${pk.attrType} ${pk.lowerAttrName}){
-    return new R<>(${classname}Service.removeById(${pk.lowerAttrName}));
+  @PostMapping("/delete")
+  public R delete(@RequestBody ${pk.attrType}[] ${pk.lowerAttrName}s){
+    return new R<>(${classname}Service.removeByIds(Arrays.asList(${pk.lowerAttrName}s)));
   }
 
 }

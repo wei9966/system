@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.qs.insurance.codegen.dao.SysGeneratorMapper;
 import com.qs.insurance.codegen.model.GenConfig;
+import com.qs.insurance.codegen.model.SysGenerator;
 import com.qs.insurance.codegen.service.SysGeneratorService;
 import com.qs.insurance.codegen.util.GenUtils;
 import lombok.AllArgsConstructor;
@@ -31,13 +32,16 @@ public class SysGeneratorServiceImpl implements SysGeneratorService {
 
 	/**
 	 * 分页查询表
-	 *
-	 * @param tableName 查询条件
 	 * @return
 	 */
 	@Override
-	public IPage<List<Map<String, Object>>> getPage(Page page, String tableName) {
-		return sysGeneratorMapper.queryList(page,tableName);
+	public IPage<SysGenerator> getPage(Map map) {
+		Page<SysGenerator> generatorPage = new Page<>(Long.parseLong(map.get("pageNo").toString()),Long.parseLong(map.get("pageSize").toString()));
+		List<SysGenerator> sysGenerators = sysGeneratorMapper.queryList(map);
+		generatorPage.setTotal(Long.parseLong(sysGenerators.size()+""));
+		generatorPage.setPages(sysGenerators.size()%generatorPage.getSize()==0?sysGenerators.size()/generatorPage.getSize():sysGenerators.size()/generatorPage.getSize()+1);
+		generatorPage.setRecords(sysGenerators);
+		return generatorPage;
 	}
 
 	/**

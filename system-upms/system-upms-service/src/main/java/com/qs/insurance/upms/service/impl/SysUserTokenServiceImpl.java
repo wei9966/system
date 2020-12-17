@@ -23,7 +23,7 @@ import java.util.Date;
 @Service("sysUserTokenService")
 public class SysUserTokenServiceImpl extends ServiceImpl<SysUserTokenMapper, SysUserToken> implements SysUserTokenService {
 	//12小时后过期
-	private final static int EXPIRE = 3600 * 12;
+	private final static int EXPIRE = 3600;
 
 
 	@Override

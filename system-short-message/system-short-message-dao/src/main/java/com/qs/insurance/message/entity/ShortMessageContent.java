@@ -13,15 +13,15 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 短信内容模块
+ * 短信获取记录
  *
  * @author wb
- * @date 2020-12-03 22:14:59
+ * @date 2020-12-18 01:22:18
  */
 @Data
 @TableName("short_message_content")
 @EqualsAndHashCode(callSuper = true)
-public class ShortMessageContent extends Model<ShortMessageContent> {
+public class ShortMessageContent extends Model<ShortMessageContent> implements Serializable {
 private static final long serialVersionUID=1L;
 
 /**
@@ -57,13 +57,14 @@ private Date createTime;
                     @TableField(fill = FieldFill.UPDATE)
             @ApiModelProperty(hidden = true, value = "最新获取时间")
 private Date updateTime;
-    /**
-     * 项目名称
-     */
-    private String projectName;
+/**
+ * 项目名称
+ */
+                @ApiModelProperty(hidden = true, value = "项目名称")
+private String projectName;
 
-    /**
-     * 主键值
+/**
+ * 主键值
  */
 @Override
 protected Serializable pkVal(){

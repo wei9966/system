@@ -2,10 +2,9 @@
 package com.qs.insurance.codegen.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.qs.insurance.codegen.model.GenConfig;
+import com.qs.insurance.codegen.model.SysGenerator;
 
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -26,8 +25,7 @@ public interface SysGeneratorService {
 
 	/**
 	 * 分页查询表
-	 * @param tableName 表名
 	 * @return
 	 */
-	IPage<List<Map<String, Object>>> getPage(Page page, String tableName);
+	IPage<SysGenerator> getPage(Map map);
 }

@@ -48,9 +48,12 @@ public class GenUtils {
 	private final String INDEX_VUE_VM = "index.vue.vm";
 	private final String API_JS_VM = "api.js.vm";
 	private final String CRUD_JS_VM = "crud.js.vm";
+	private final String INDEX1_VUE_VM = "index1.vue.vm";
+	private final String ADD_OR_UPDATE_VM = "add-or-update.vue.vm";
 
 	private List<String> getTemplates() {
 		List<String> templates = new ArrayList<>();
+		//新增前端模板生成
 		templates.add("template/Entity.java.vm");
 		templates.add("template/Mapper.java.vm");
 		templates.add("template/Mapper.xml.vm");
@@ -59,9 +62,11 @@ public class GenUtils {
 		templates.add("template/Controller.java.vm");
 		templates.add("template/menu.sql.vm");
 
-		templates.add("template/index.vue.vm");
-		templates.add("template/api.js.vm");
-		templates.add("template/crud.js.vm");
+//		templates.add("template/index.vue.vm");
+		templates.add("template/index1.vue.vm");
+//		templates.add("template/api.js.vm");
+//		templates.add("template/crud.js.vm");
+		templates.add("template/add-or-update.vue.vm");
 		return templates;
 	}
 
@@ -73,6 +78,7 @@ public class GenUtils {
 		//配置信息
 		Configuration config = getConfig();
 		boolean hasBigDecimal = false;
+		boolean hasList = false;
 		//表信息
 		TableEntity tableEntity = new TableEntity();
 		tableEntity.setTableName(table.get("tableName"));
@@ -110,10 +116,13 @@ public class GenUtils {
 			columnEntity.setLowerAttrName(StringUtils.uncapitalize(attrName));
 
 			//列的数据类型，转换成Java类型
-			String attrType = config.getString(columnEntity.getDataType(), "unknowType");
+			String attrType = config.getString(columnEntity.getDataType(), columnToJava(columnEntity.getDataType()));
 			columnEntity.setAttrType(attrType);
 			if (!hasBigDecimal && "BigDecimal".equals(attrType)) {
 				hasBigDecimal = true;
+			}
+			if (!hasList && "array".equals(columnEntity.getExtra())) {
+				hasList = true;
 			}
 			//是否主键
 			if ("PRI".equalsIgnoreCase(column.get("columnKey")) && tableEntity.getPk() == null) {
@@ -261,9 +270,16 @@ public class GenUtils {
 
 		if (template.contains(INDEX_VUE_VM)) {
 			return CommonConstants.FRONT_END_PROJECT + File.separator + "src" + File.separator + "views" +
+					File.separator +  className.toLowerCase() + File.separator + "index1.vue";
+		}
+		if (template.contains(INDEX1_VUE_VM)) {
+			return CommonConstants.FRONT_END_PROJECT + File.separator + "src" + File.separator + "views" +
 					File.separator +  className.toLowerCase() + File.separator + "index.vue";
 		}
-
+		if (template.contains(ADD_OR_UPDATE_VM)) {
+			return CommonConstants.FRONT_END_PROJECT + File.separator + "src" + File.separator + "views" +
+					File.separator +  className.toLowerCase() + File.separator + "add-or-update.vue";
+		}
 		if (template.contains(API_JS_VM)) {
 			return CommonConstants.FRONT_END_PROJECT + File.separator + "src" + File.separator + "api" + File.separator + className.toLowerCase() + ".js";
 		}

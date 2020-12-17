@@ -1,9 +1,7 @@
-
-
 package com.qs.insurance.codegen.dao;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.qs.insurance.codegen.model.SysGenerator;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -11,23 +9,19 @@ import java.util.List;
 import java.util.Map;
 
 /**
- *
  * @Author jhy
- * @Date  2020/6/17 10:15 下午
+ * @Date 2020/6/17 10:15 下午
  * @Description :代码生成器
- *
  */
 @Mapper
-public interface SysGeneratorMapper {
+public interface SysGeneratorMapper extends BaseMapper<SysGenerator> {
 
 	/**
 	 * 分页查询表格
 	 *
-	 * @param page
-	 * @param tableName
 	 * @return
 	 */
-	IPage<List<Map<String, Object>>> queryList(Page page, @Param("tableName") String tableName);
+	List<SysGenerator> queryList(Map<String, Object> map);
 
 
 	/**

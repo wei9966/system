@@ -5,10 +5,10 @@ import com.qs.insurance.message.entity.ShortMessageContent;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * 短信内容模块
+ * 短信获取记录
  *
  * @author wb
- * @date 2020-12-03 22:14:59
+ * @date 2020-12-18 01:22:18
  */
 @Mapper
 public interface ShortMessageContentMapper extends BaseMapper<ShortMessageContent> {
