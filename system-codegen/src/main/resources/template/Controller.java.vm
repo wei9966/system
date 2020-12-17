@@ -34,7 +34,7 @@ public class ${className}Controller {
    * @return
    */
   @ApiOperation("分页查询${comments}")
-  @GetMapping("/page")
+  @GetMapping("/list")
   public R get${className}Page(@ApiParam("当前页数") @RequestParam("pageNo") Integer pageNo,
                                @ApiParam("每页显示条数")@RequestParam("pageSize")Integer pageSize) {
     Page<${className}> ${classname}Page = new Page<>(pageNo, pageSize);

@@ -36,7 +36,7 @@ public class ShortMessageContentController {
    * @return
    */
   @ApiOperation("分页查询短信获取记录")
-  @GetMapping("/page")
+  @GetMapping("/list")
   public R getShortMessageContentPage(@ApiParam("当前页数") @RequestParam("pageNo") Integer pageNo,
                                       @ApiParam("每页显示条数")@RequestParam("pageSize")Integer pageSize) {
     Page<ShortMessageContent> shortMessageContentPage = new Page<>(pageNo, pageSize);

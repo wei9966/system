@@ -87,8 +87,8 @@
           #[[url: this.$http.adornUrl]]#('${moduleName}/${pathName}/list'),
           method: 'get',
           #[[params: this.$http.adornParams({]]#
-            'page': this.pageNo,
-            'limit': this.pageSize,
+            'pageNo': this.pageNo,
+            'pageSize': this.pageSize,
             'key': this.dataForm.key
           })
         }).then(({data}) => {
