@@ -58,16 +58,17 @@ public class SysLoginController extends AbstractController {
 		ImageIO.write(image, "jpg", out);
 		IOUtils.closeQuietly(out);
 	}
-
+//Warning:java: Some modules with cyclic dependencies [system-common-core,system-common-log,system-upms-common,system-common-dynamic-gateway,system-upms-api,system-common-data,system-upms-dao] have 'additional command line parameters' overridden in project settings.
+//These compilation options were applied to all modules in the cycle.
 	/**
 	 * 登录
 	 */
 	@PostMapping("/sys/login")
 	public Map<String, Object> login(@RequestBody SysLoginForm form)throws IOException {
-		boolean captcha = sysCaptchaService.validate(form.getUuid(), form.getCaptcha());
-		if(!captcha){
-			return R.error("验证码不正确");
-		}
+//		boolean captcha = sysCaptchaService.validate(form.getUuid(), form.getCaptcha());
+//		if(!captcha){
+//			return R.error("验证码不正确");
+//		}
 
 		//用户信息
 		SysUserEntity user = sysUserService.queryByUserName(form.getUsername());

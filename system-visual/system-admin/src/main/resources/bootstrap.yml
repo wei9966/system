@@ -10,8 +10,8 @@ spring:
         file-extension: yml
         namespace: @dev.namespace@
         group: @dev.group@
-        shared-dataids: system-config.yml
-        refreshable-dataids: system-config.yml
+        shared-dataids: system-config.yml,nacos-log-config.yml
+        refreshable-dataids: system-config.yml,nacos-log-config.yml
         prefix: @artifactId@
       discovery:
           server-addr: @nacos.dev.addr@
@@ -20,4 +20,4 @@ spring:
   main:
     allow-bean-definition-overriding: true
 server:
-  port: 14000
+  port: 22000

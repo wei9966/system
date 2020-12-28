@@ -30,7 +30,6 @@ public class ${className}Controller {
   /**
    * 分页查询${comments}
    * @param pageNo 分页数量
-   * @param ${classname} ${comments}
    * @return
    */
   @ApiOperation("分页查询${comments}")

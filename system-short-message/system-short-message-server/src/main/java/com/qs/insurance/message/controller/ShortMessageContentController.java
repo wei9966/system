@@ -41,7 +41,8 @@ public class ShortMessageContentController {
                                       @ApiParam("每页显示条数")@RequestParam("pageSize")Integer pageSize) {
     Page<ShortMessageContent> shortMessageContentPage = new Page<>(pageNo, pageSize);
     LambdaQueryWrapper<ShortMessageContent> shortMessageContentWrapper = Wrappers.<ShortMessageContent>query().lambda();
-    return  new R<>(shortMessageContentService.page(shortMessageContentPage,shortMessageContentWrapper));
+    shortMessageContentWrapper.isNotNull(ShortMessageContent::getCodeContent);
+    return  new R<>(shortMessageContentService.page(shortMessageContentPage, shortMessageContentWrapper));
   }
 
 

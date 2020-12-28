@@ -1,3 +1,4 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
   com.qs.insurance.system.common.core.config.MessageSourceConfig,\
-  com.qs.insurance.system.common.core.config.RestTemplateConfig
+  com.qs.insurance.system.common.core.config.RestTemplateConfig,\
+  com.qs.insurance.system.common.core.config.JacksonConfig

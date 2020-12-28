@@ -38,7 +38,7 @@ public class SysGeneratorServiceImpl implements SysGeneratorService {
 	public IPage<SysGenerator> getPage(Map map) {
 		Page<SysGenerator> generatorPage = new Page<>(Long.parseLong(map.get("pageNo").toString()),Long.parseLong(map.get("pageSize").toString()));
 		List<SysGenerator> sysGenerators = sysGeneratorMapper.queryList(map);
-		generatorPage.setTotal(Long.parseLong(sysGenerators.size()+""));
+		generatorPage.setTotal(sysGeneratorMapper.queryListCount(map));
 		generatorPage.setPages(sysGenerators.size()%generatorPage.getSize()==0?sysGenerators.size()/generatorPage.getSize():sysGenerators.size()/generatorPage.getSize()+1);
 		generatorPage.setRecords(sysGenerators);
 		return generatorPage;

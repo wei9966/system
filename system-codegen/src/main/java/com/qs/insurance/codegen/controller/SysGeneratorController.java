@@ -42,7 +42,7 @@ public class SysGeneratorController {
 	@ApiOperation("获取可生成列表")
 	public R getPage(@RequestBody PageReqDto pageReqDto) {
 		Map<String,Object> map=new HashMap<>();
-		map.put("pageNo",pageReqDto.getPageNo());
+		map.put("pageNo",(pageReqDto.getPageNo()-1)*pageReqDto.getPageSize());
 		map.put("pageSize",pageReqDto.getPageSize());
 		map.put("tableName",pageReqDto.getTableName());
 		map.put("schema",pageReqDto.getSchema());

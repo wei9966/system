@@ -23,7 +23,12 @@ public interface SysGeneratorMapper extends BaseMapper<SysGenerator> {
 	 */
 	List<SysGenerator> queryList(Map<String, Object> map);
 
-
+	/**
+	 * 查询总条数
+	 * @param map
+	 * @return
+	 */
+	Long queryListCount(Map<String, Object> map);
 	/**
 	 * 查询表列信息
 	 *

@@ -11,7 +11,13 @@
 		order by create_time desc limit #{pageNo},#{pageSize}
 	</select>
 
-
+	<select id="queryListCount" resultType="java.lang.Long">
+		select count(*) from information_schema.tables
+		where table_schema = #{schema}
+		<if test="tableName != null and tableName.trim() != ''">
+			and table_name like concat('%', #{tableName}, '%')
+		</if>
+	</select>
 	<select id="queryTable" resultType="java.util.Map">
 				select table_name tableName, engine, table_comment tableComment, create_time createTime from information_schema.tables
 			where table_schema =#{query.storehouseName}  and table_name = #{query.tableName}
