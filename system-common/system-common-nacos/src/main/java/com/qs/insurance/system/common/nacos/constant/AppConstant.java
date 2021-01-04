@@ -62,6 +62,10 @@ public interface AppConstant {
 	 */
 	String APPLICATION_ACTIVITI_NAME = APPLICATION_NAME_PREFIX + "activiti-server";
 	/**
+	 * admin管理模块
+	 */
+	String APPLICATION_ADMIN_NAME = APPLICATION_NAME_PREFIX + "admin";
+	/**
 	 * 开发环境
 	 */
 	String DEV_CODE = "dev";

@@ -1,5 +1,7 @@
 package com.qs.insurance.system.admin;
 
+import com.qs.insurance.system.common.nacos.QsApplication;
+import com.qs.insurance.system.common.nacos.constant.AppConstant;
 import de.codecentric.boot.admin.server.config.EnableAdminServer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.cloud.client.SpringCloudApplication;
@@ -8,6 +10,6 @@ import org.springframework.cloud.client.SpringCloudApplication;
 @EnableAdminServer
 public class SystemAdminApplication {
     public static void main(String[] args) {
-        SpringApplication.run(SystemAdminApplication.class,args);
+        QsApplication.run(AppConstant.APPLICATION_ADMIN_NAME,SystemAdminApplication.class,args);
     }
 }
