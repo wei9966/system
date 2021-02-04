@@ -16,7 +16,6 @@
         <module>system-eladmin</module>
         <module>system-activiti</module>
         <module>system-short-message</module>
-        <module>renren-fast</module>
         <module>system-auth</module>
         <module>system-visual</module>
     </modules>
