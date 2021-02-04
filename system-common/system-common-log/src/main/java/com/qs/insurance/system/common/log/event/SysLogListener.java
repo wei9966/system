@@ -1,6 +1,5 @@
 package com.qs.insurance.system.common.log.event;
 
-import com.qs.insurance.system.common.core.constant.SecurityConstants;
 import com.qs.insurance.system.common.log.annotation.SysLog;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

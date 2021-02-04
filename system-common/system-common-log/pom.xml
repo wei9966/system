@@ -28,11 +28,26 @@
 <!--            <artifactId>spring-security-oauth2</artifactId>-->
 <!--        </dependency>-->
         <!--UPMS接口模块-->
-        <!--<dependency>-->
-            <!--<groupId>com.rongda</groupId>-->
-            <!--<artifactId>system-upms-api</artifactId>-->
-            <!--<version>0.0.1</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>com.qs.insurance</groupId>
+            <artifactId>system-upms-model</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+            <version>1.4.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+            <version>1.4.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.7.0</version>
+        </dependency>
     </dependencies>
 
 </project>

@@ -15,9 +15,10 @@
             <groupId>com.qs.insurance</groupId>
             <artifactId>system-common-swagger</artifactId>
         </dependency>
+        <!--mybatis plus extension,包含了mybatis plus core-->
         <dependency>
-            <groupId>com.qs.insurance</groupId>
-            <artifactId>system-common-data</artifactId>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-extension</artifactId>
         </dependency>
     </dependencies>
 

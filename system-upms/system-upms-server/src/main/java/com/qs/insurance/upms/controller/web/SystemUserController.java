@@ -8,6 +8,7 @@ import com.qs.insurance.system.common.core.utils.R;
 import com.qs.insurance.system.common.log.annotation.SysLog;
 import com.qs.insurance.system.common.security.utils.AppSecurityUtils;
 import com.qs.insurance.upms.entity.SystemUser;
+import com.qs.insurance.upms.service.SysUserRoleService;
 import com.qs.insurance.upms.service.SystemUserService;
 import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
@@ -16,6 +17,8 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 
@@ -33,6 +36,7 @@ import java.util.Map;
 public class SystemUserController {
 
   private final  SystemUserService systemUserService;
+  private final SysUserRoleService sysUserRoleService;
   /**
    * 所有用户列表
    */
@@ -88,10 +92,9 @@ public class SystemUserController {
   public R info(@PathVariable("userId") Long userId){
     SystemUser user = systemUserService.getById(userId);
 
-    //获取用户所属的角色列表
-//    List<Long> roleIdList = systemUserService.queryRoleIdList(userId);
-//    user.setRoleIdList(roleIdList);
-
+//    获取用户所属的角色列表
+    List<Long> roleIdList = sysUserRoleService.queryRoleIdList(userId);
+    user.setRoleIdList(roleIdList);
     return new R<>(user);
   }
 
@@ -102,35 +105,31 @@ public class SystemUserController {
   @PostMapping("/save")
   @RequiresPermissions("sys:user:save")
   public R save(@RequestBody SystemUser user){
-
 //    user.setCreateUserId(getUserId());
-//    systemUserService.saveUser(user);
-
-    return new R();
+    systemUserService.save(user);
+    sysUserRoleService.saveOrUpdate(user.getId(), user.getRoleIdList());
+    return new R<>(true);
   }
 
   /**
    * 修改用户
    */
-//  @SysLog("修改用户")
-//  @PostMapping("/update")
-//  @RequiresPermissions("sys:user:update")
-//  public R update(@RequestBody SysUserEntity user){
-//    ValidatorUtils.validateEntity(user, UpdateGroup.class);
-//
-//    user.setCreateUserId(getUserId());
-//    sysUserService.update(user);
-//
-//    return R.ok();
-//  }
+  @SysLog("修改用户")
+  @PostMapping("/update")
+  @RequiresPermissions("sys:user:update")
+  public R update(@RequestBody SystemUser user){
+    //保存用户与角色关系
+    sysUserRoleService.saveOrUpdate(user.getId(), user.getRoleIdList());
+    return new R<>(systemUserService.updateById(user));
+  }
 //
 //  /**
 //   * 删除用户
 //   */
-//  @SysLog("删除用户")
-//  @PostMapping("/delete")
-//  @RequiresPermissions("sys:user:delete")
-//  public R delete(@RequestBody Long[] userIds){
+  @SysLog("删除用户")
+  @PostMapping("/delete")
+  @RequiresPermissions("sys:user:delete")
+  public R delete(@RequestBody Long[] userIds){
 //    if(ArrayUtils.contains(userIds, 1L)){
 //      return R.error("系统管理员不能删除");
 //    }
@@ -138,9 +137,7 @@ public class SystemUserController {
 //    if(ArrayUtils.contains(userIds, getUserId())){
 //      return R.error("当前用户不能删除");
 //    }
-//
-//    sysUserService.deleteBatch(userIds);
-//
-//    return R.ok();
-//  }
+    systemUserService.removeByIds(Arrays.asList(userIds));
+    return new R();
+  }
 }

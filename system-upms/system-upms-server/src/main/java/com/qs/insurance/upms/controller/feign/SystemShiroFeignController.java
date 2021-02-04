@@ -3,14 +3,19 @@ package com.qs.insurance.upms.controller.feign;
 import com.qs.insurance.upms.entity.SysUserToken;
 import com.qs.insurance.upms.entity.SystemUser;
 import com.qs.insurance.upms.service.ShiroService;
+import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Set;
 
 @RestController
 @RequestMapping("/shiro")
 @AllArgsConstructor
+@Api(value = "安全相关feign请求", tags = "安全相关feign请求")
 public class SystemShiroFeignController {
     private final ShiroService shiroService;
     /**

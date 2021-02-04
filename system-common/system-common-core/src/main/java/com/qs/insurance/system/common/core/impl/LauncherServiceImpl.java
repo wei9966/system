@@ -36,6 +36,8 @@ public class LauncherServiceImpl implements LauncherService {
 		props.setProperty("spring.cloud.nacos.discovery.namespace", "c90778d6-c304-4d70-89ee-20bfd49d7dda");
 		props.setProperty("spring.cloud.nacos.discovery.group", "SYSTEM_DEV");
 		props.setProperty("spring.cloud.nacos.config.group", "SYSTEM_DEV");
+		props.setProperty("rocketmq.name-server", "192.168.56.10:9876");
+		props.setProperty("rocketmq.producer.group", "test-group");
 	}
 
 }

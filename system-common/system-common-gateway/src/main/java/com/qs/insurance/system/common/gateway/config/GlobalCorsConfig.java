@@ -16,6 +16,7 @@ import org.springframework.web.cors.reactive.CorsUtils;
 import org.springframework.web.server.ServerWebExchange;
 import org.springframework.web.server.WebFilter;
 import org.springframework.web.server.WebFilterChain;
+import reactor.core.publisher.Mono;
 
 
 @Configuration
@@ -50,7 +51,7 @@ public class GlobalCorsConfig {
                 }
                 if (request.getMethod() == HttpMethod.OPTIONS) {
                     response.setStatusCode(HttpStatus.OK);
-                    //return Mono.empty();
+                    return Mono.empty();
                 }
             }
             return chain.filter(ctx);

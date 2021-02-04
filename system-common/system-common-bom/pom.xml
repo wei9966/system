@@ -75,6 +75,16 @@
             </dependency>
             <dependency>
                 <groupId>com.qs.insurance</groupId>
+                <artifactId>system-common-rocketmq</artifactId>
+                <version>${qs.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.qs.insurance</groupId>
+                <artifactId>system-common-elasticsearch</artifactId>
+                <version>${qs.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.qs.insurance</groupId>
                 <artifactId>system-common-nacos</artifactId>
                 <version>${qs.version}</version>
             </dependency>

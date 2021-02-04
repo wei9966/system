@@ -2,8 +2,13 @@ package com.qs.insurance.system.common.data.mybatis;
 
 import cn.hutool.core.date.DateTime;
 import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.util.ObjectUtil;
+import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.qs.insurance.system.common.core.constant.Constant;
+import com.qs.insurance.system.common.security.utils.AppSecurityUtils;
+import com.qs.insurance.upms.entity.SystemUser;
+import org.apache.commons.lang.StringUtils;
 import org.apache.ibatis.reflection.MetaObject;
 import org.springframework.stereotype.Component;
 
@@ -33,24 +38,22 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
         Object createTime = getFieldValByName("createTime", metaObject);
         Object isDeteled = getFieldValByName("isDeleted", metaObject);
         Object isUse = getFieldValByName("isUse", metaObject);
-        Object orgId = getFieldValByName("orgId", metaObject);
-        Object orgName = getFieldValByName("orgName", metaObject);
         Date currentDate = DateUtil.date();
 //        MqmcUser user = SecurityUtils.getUser();
 //        if(null ==user){
 //            setFieldValByName("createTime", currentDate, metaObject);
 //            setFieldValByName("isDeleted", Constant.BYTE_NO, metaObject);
 //        }else{
-////        CurrentUser currentUser = SecurityUtils.getCurrentUser();
-//
-//        if (createUserName == null) {
-////            String name = ObjectUtil.isNull(user) ? "未获取" : StrUtil.isBlank(user.getName()) ? user.getUsername() : user.getName();
-////            setFieldValByName("createUserName", name, metaObject);
-////        }
-////        if (createUserId == null) {
-////            Long userId = ObjectUtil.isNull(user) ? null : user.getId();
-////            setFieldValByName("createUserId", userId, metaObject);
-////        }
+//        CurrentUser currentUser = SecurityUtils;
+        SystemUser user = AppSecurityUtils.getUser();
+        if (createUserName == null||StringUtils.isBlank(createUserName.toString())) {
+            String name = ObjectUtil.isNull(user) ? "未获取" : StrUtil.isBlank(user.getName()) ? user.getName() : user.getName();
+            setFieldValByName("createUserName", name, metaObject);
+        }
+        if (createUserId == null) {
+            Long userId = ObjectUtil.isNull(user) ? null : user.getId();
+            setFieldValByName("createUserId", userId, metaObject);
+        }
         if (createTime == null) {
             setFieldValByName("createTime", currentDate, metaObject);
         }
@@ -60,16 +63,6 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
         if (isUse == null) {
             setFieldValByName("isUse", Constant.BYTE_YES, metaObject);
         }
-
-//        if (orgId == null) {
-////            Long currentOrgId = ObjectUtil.isNull(user) ? null : user.getOrgId();
-//            setFieldValByName("orgId", currentOrgId, metaObject);
-//        }
-//        if (orgName == null) {
-//            String currentOrgName = ObjectUtil.isNull(currentUser) ? null : currentUser.getOrgName();
-//            setFieldValByName("orgName", currentOrgName, metaObject);
-//        }
-//        }
     }
 
 /**
@@ -84,16 +77,16 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
         Object updateUserName = getFieldValByName("updateUserName", metaObject);
         Object updateUserId = getFieldValByName("updateUserId", metaObject);
         Object updateTime = getFieldValByName("updateTime", metaObject);
-////        MqmcUser user = SecurityUtils.getUser();
+        SystemUser user = AppSecurityUtils.getUser();
         DateTime currentDate = DateUtil.date();
-//        if (updateUserName == null) {
-//            String name = ObjectUtil.isNull(user) ? "未获取" : StrUtil.isBlank(user.getName()) ? user.getUsername() : user.getName();
-//            setFieldValByName("updateUserName", name, metaObject);
-//        }
-//        if (updateUserId == null) {
-//            Long userId = ObjectUtil.isNull(user) ? null : user.getId();
-//            setFieldValByName("updateUserId", userId, metaObject);
-//        }
+        if (null==updateUserName||StringUtils.isBlank(updateUserName.toString())) {
+            String name = ObjectUtil.isNull(user) ? "未获取" : StrUtil.isBlank(user.getName()) ? user.getName() : user.getName();
+            setFieldValByName("updateUserName", name, metaObject);
+        }
+        if (updateUserId == null) {
+            Long userId = ObjectUtil.isNull(user) ? null : user.getId();
+            setFieldValByName("updateUserId", userId, metaObject);
+        }
         if (updateTime == null) {
             setFieldValByName("updateTime", currentDate, metaObject);
         }

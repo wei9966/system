@@ -21,6 +21,10 @@
         </dependency>
         <dependency>
             <groupId>com.qs.insurance</groupId>
+            <artifactId>system-common-rocketmq</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.qs.insurance</groupId>
             <artifactId>system-common-log</artifactId>
             <exclusions>
                 <exclusion>

@@ -17,9 +17,9 @@
             <artifactId>system-upms-dao</artifactId>
             <version>0.0.1</version>
         </dependency>
-        <dependency>
-            <groupId>com.qs.insurance</groupId>
-            <artifactId>system-common-security</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.qs.insurance</groupId>-->
+<!--            <artifactId>system-common-security</artifactId>-->
+<!--        </dependency>-->
     </dependencies>
 </project>

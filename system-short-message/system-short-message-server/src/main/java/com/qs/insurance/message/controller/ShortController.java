@@ -11,9 +11,11 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
+import java.util.UUID;
 
 
 /**
@@ -30,7 +32,7 @@ import java.util.Arrays;
 public class ShortController {
 
   private final  ShortMessageService shortMessageService;
-
+  private RocketMQTemplate rocketMQTemplate;
   /**
    * 分页查询聚码主表
    * @param pageNo 分页数量
@@ -88,4 +90,10 @@ public class ShortController {
     return new R<>(shortMessageService.removeByIds(Arrays.asList(ids)));
   }
 
+  @GetMapping("/test/rocketMq")
+  @ApiOperation("測試rocketMq")
+  public R test() {
+    rocketMQTemplate.convertAndSend("rocketmq-demo", UUID.randomUUID().toString());
+    return new R<>("測試rocketMq");
+  }
 }

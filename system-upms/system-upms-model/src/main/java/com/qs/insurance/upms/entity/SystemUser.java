@@ -8,6 +8,7 @@ import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 系统用户
@@ -73,6 +74,8 @@ public class SystemUser extends Model<SystemUser> {
     @ApiModelProperty(hidden = true, value = "更新时间")
     private Date updateTime;
 
+    @TableField(exist = false)
+    private List<Long> roleIdList;
     /**
      * 主键值
      */
@@ -80,4 +83,5 @@ public class SystemUser extends Model<SystemUser> {
     protected Serializable pkVal() {
         return this.id;
     }
+
 }

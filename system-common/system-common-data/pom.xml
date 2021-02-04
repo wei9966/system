@@ -28,10 +28,10 @@
             <artifactId>mybatis-plus-extension</artifactId>
         </dependency>
         <!--安全依赖获取上下文信息-->
-<!--        <dependency>-->
-<!--            <groupId>com.qs.insurance</groupId>-->
-<!--            <artifactId>system-common-security</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.qs.insurance</groupId>
+            <artifactId>system-common-security</artifactId>
+        </dependency>
         <!--缓存依赖-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

@@ -61,7 +61,7 @@
               if (data && data.code === 1) {
 #foreach($column in $columns)
 #if($column.columnName != $pk.columnName)
-                this.dataForm.${column.lowerAttrName} = data.${classname}.${column.lowerAttrName}
+                this.dataForm.${column.lowerAttrName} = data.data.${column.lowerAttrName}
 #end
 #end
               }

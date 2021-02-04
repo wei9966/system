@@ -23,6 +23,8 @@
         <module>system-common-transaction</module>
         <module>system-common-nacos</module>
         <module>system-common-security</module>
+        <module>system-common-rocketmq</module>
+        <module>system-common-elasticsearch</module>
     </modules>
 
 </project>

@@ -44,4 +44,5 @@ public class SystemUserServiceImpl extends ServiceImpl<SystemUserMapper, SystemU
     public List<Long> queryAllMenuId(Long userId) {
         return baseMapper.queryAllMenuId(userId);
     }
+
 }
