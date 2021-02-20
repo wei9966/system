@@ -46,6 +46,7 @@ public class QsApplication {
 	 * @return an application context created from the current state
 	 */
 	public static ConfigurableApplicationContext run(String appName, Class source, String... args) {
+		System.setProperty("es.set.netty.runtime.available.processors", "false");
 		SpringApplicationBuilder builder = createSpringApplicationBuilder(appName, source, args);
 		return builder.run(args);
 	}

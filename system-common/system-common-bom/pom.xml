@@ -307,6 +307,12 @@
                 <artifactId>activiti-spring-boot-starter</artifactId>
                 <version>${activiti.version}</version>
             </dependency>
+<!--        解决gateway启动不了-->
+            <dependency>
+                <groupId>io.projectreactor.netty</groupId>
+                <artifactId>reactor-netty</artifactId>
+                <version>0.9.4.RELEASE</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 </project>

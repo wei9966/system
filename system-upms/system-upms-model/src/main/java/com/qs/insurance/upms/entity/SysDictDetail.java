@@ -8,6 +8,8 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.Document;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -21,6 +23,7 @@ import java.util.Date;
 @Data
 @TableName("sys_dict_detail")
 @EqualsAndHashCode(callSuper = true)
+@Document(indexName = "dictDetail",type = "sys_dict_detail", shards = 1, replicas = 0)
 public class SysDictDetail extends Model<SysDictDetail> implements Serializable {
 private static final long serialVersionUID=1L;
 
@@ -29,6 +32,7 @@ private static final long serialVersionUID=1L;
  */
         @TableId
                 @ApiModelProperty(hidden = false, value = "ID")
+        @Id
 private Long detailId;
 /**
  * 字典id

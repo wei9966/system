@@ -1,18 +1,18 @@
 package com.qs.insurance.upms.controller.web;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.qs.insurance.system.common.core.utils.R;
 import com.qs.insurance.upms.entity.SysDict;
+import com.qs.insurance.upms.repository.SysDictRepository;
 import com.qs.insurance.upms.service.SysDictService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 
 /**
@@ -30,6 +30,8 @@ public class SysDictController {
 
   private final  SysDictService sysDictService;
 
+  private final SysDictRepository sysDictRepository;
+
   /**
    * 分页查询数据字典
    * @param
@@ -38,11 +40,16 @@ public class SysDictController {
   @ApiOperation("查询数据字典")
   @GetMapping("/list")
   public R getSysDictPage(@RequestParam(value = "key",required = false) String key) {
-    LambdaQueryWrapper<SysDict> lambda = Wrappers.<SysDict>query().lambda();
-    if (StringUtils.isNotBlank(key)){
-      lambda.like(SysDict::getDescription,key);
-    }
-    return  new R<>(sysDictService.list(lambda));
+    ArrayList<SysDict> sysDicts = new ArrayList<>();
+    sysDictRepository.findAll().forEach(sysDicts::add);
+    return  new R<>(sysDicts);
+  }
+
+  @ApiOperation("同步es数据")
+  @GetMapping("synchronize")
+  public R sysDcitSynchronize(){
+    List<SysDict> list = this.sysDictService.list();
+    return new R<>(sysDictRepository.saveAll(list));
   }
 
 
@@ -54,7 +61,8 @@ public class SysDictController {
   @ApiOperation("通过id查询数据字典")
   @GetMapping("/info/{dictId}")
   public R getById(@PathVariable("dictId") Long dictId){
-    return new R<>(sysDictService.getById(dictId));
+//    return new R<>(sysDictService.getById(dictId));
+    return new R<>(sysDictRepository.findById(dictId));
   }
 
   /**
@@ -65,7 +73,9 @@ public class SysDictController {
   @ApiOperation("新增数据字典")
   @PostMapping("/save")
   public R save(@RequestBody SysDict sysDict){
-    return new R<>(sysDictService.save(sysDict));
+    sysDictService.save(sysDict);
+    sysDictRepository.save(sysDict);
+    return new R<>();
   }
 
   /**
@@ -76,7 +86,11 @@ public class SysDictController {
   @ApiOperation("修改数据字典")
   @PostMapping("/update")
   public R updateById(@RequestBody SysDict sysDict){
-    return new R<>(sysDictService.updateById(sysDict));
+    sysDictService.updateById(sysDict);
+    sysDictRepository.findById(sysDict.getDictId()).ifPresent(sysDict1 -> {
+      sysDictRepository.save(sysDict);
+    });
+    return new R<>(true);
   }
 
   /**

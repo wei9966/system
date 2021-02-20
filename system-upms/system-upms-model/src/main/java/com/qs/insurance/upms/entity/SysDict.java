@@ -8,6 +8,8 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.Document;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -21,6 +23,9 @@ import java.util.Date;
 @Data
 @TableName("sys_dict")
 @EqualsAndHashCode(callSuper = true)
+@Document(indexName = "dict",type = "sys_dict", shards = 1, replicas = 0)
+//indexName索引名称 可以理解为数据库名 必须为小写 不然会报org.elasticsearch.indices.InvalidIndexNameException异常
+//type类型 可以理解为表名
 public class SysDict extends Model<SysDict> implements Serializable {
 private static final long serialVersionUID=1L;
 
@@ -29,6 +34,7 @@ private static final long serialVersionUID=1L;
  */
         @TableId
                 @ApiModelProperty(hidden = false, value = "ID")
+        @Id
 private Long dictId;
 /**
  * 字典名称

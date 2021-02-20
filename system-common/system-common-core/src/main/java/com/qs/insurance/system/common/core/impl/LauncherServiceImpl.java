@@ -30,14 +30,16 @@ public class LauncherServiceImpl implements LauncherService {
 	@Override
 	public void launcher(SpringApplicationBuilder builder, String appName, String profile) {
 		Properties props = System.getProperties();
-		props.setProperty("spring.cloud.nacos.discovery.server-addr", "47.100.79.206:8848");
-		props.setProperty("spring.cloud.nacos.config.server-addr", "47.100.79.206:8848");
-		props.setProperty("spring.cloud.nacos.config.namespace", "c90778d6-c304-4d70-89ee-20bfd49d7dda");
-		props.setProperty("spring.cloud.nacos.discovery.namespace", "c90778d6-c304-4d70-89ee-20bfd49d7dda");
+		props.setProperty("spring.cloud.nacos.discovery.server-addr", "192.168.56.10:8848");
+		props.setProperty("spring.cloud.nacos.config.server-addr", "192.168.56.10:8848");
+		props.setProperty("spring.cloud.nacos.config.namespace", "78493cf7-8186-4d81-8df4-8b3daa613e56");
+		props.setProperty("spring.cloud.nacos.discovery.namespace", "78493cf7-8186-4d81-8df4-8b3daa613e56");
 		props.setProperty("spring.cloud.nacos.discovery.group", "SYSTEM_DEV");
 		props.setProperty("spring.cloud.nacos.config.group", "SYSTEM_DEV");
 		props.setProperty("rocketmq.name-server", "192.168.56.10:9876");
 		props.setProperty("rocketmq.producer.group", "test-group");
+		//es
+		props.setProperty("spring.data.elasticsearch.cluster-name", "elasticsearch");
+		props.setProperty("spring.data.elasticsearch.cluster-nodes", "192.168.56.10:9300");
 	}
-
 }
