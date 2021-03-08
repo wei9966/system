@@ -6,7 +6,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 
 /**
- * @author jhy
  * @date 2020/4/28
  * <p>
  * 国际化配置

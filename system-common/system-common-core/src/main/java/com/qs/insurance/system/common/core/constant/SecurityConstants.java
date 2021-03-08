@@ -1,7 +1,6 @@
 package com.qs.insurance.system.common.core.constant;
 
 /**
- * @author jhy
  * @date 2020/4/28
  */
 public interface SecurityConstants {
@@ -143,17 +142,4 @@ public interface SecurityConstants {
 	 * 协议字段
 	 */
 	String DETAILS_LICENSE = "license";
-
-	/**
-	 * jhy 默认路由模块
-	 */
-    String DEFAULT_GATEWAY_PREFIX = "system";
-	/**
-	 * jhy 默认路由模块
-	 */
-	String DEFAULT_GATEWAY_PREFIX_IH = "ih";
-	/**
-	 * jhy 默认路由模块
-	 */
-	String DEFAULT_GATEWAY_PREFIX_CGHIS = "cbhis";
 }

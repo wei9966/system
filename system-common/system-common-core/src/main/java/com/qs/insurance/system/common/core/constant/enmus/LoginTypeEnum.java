@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * @author jhy
  * @date 2020/4/28
  * 社交登录类型
  */

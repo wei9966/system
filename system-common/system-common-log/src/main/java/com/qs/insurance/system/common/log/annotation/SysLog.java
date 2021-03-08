@@ -4,7 +4,6 @@ import java.lang.annotation.*;
 
 /**
  *
- * @Author jhy
  * @Date  2020/5/5 7:18 下午
  * @Description :操作日志注解
  *

@@ -8,7 +8,6 @@ import org.springframework.core.annotation.Order;
 import org.springframework.scheduling.annotation.Async;
 
 /**
- * @author jhy
  * 异步监听日志事件
  */
 @Slf4j

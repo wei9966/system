@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * @author jhy
  * 系统日志事件
  */
 @Getter

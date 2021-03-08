@@ -15,7 +15,6 @@ import java.util.Objects;
 /**
  * 系统日志工具类
  *
- * @author jhy
  */
 @UtilityClass
 public class SysLogUtils {

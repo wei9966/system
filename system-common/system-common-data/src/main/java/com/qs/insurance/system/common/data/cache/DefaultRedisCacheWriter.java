@@ -31,7 +31,6 @@ import java.util.function.Function;
  * requests and potential command wait times.
  *
  * @author Christoph Strobl
- * @author jhy
  * @since 2.0
  */
 class DefaultRedisCacheWriter implements RedisCacheWriter {

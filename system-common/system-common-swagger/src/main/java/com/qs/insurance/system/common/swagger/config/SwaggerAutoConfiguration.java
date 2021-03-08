@@ -25,7 +25,6 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * @author jhy
  * swagger配置
  */
 @Configuration
@@ -88,7 +87,7 @@ public class SwaggerAutoConfiguration {
 //				.securitySchemes(Collections.singletonList(securitySchema()))
 //				.securityContexts(Collections.singletonList(securityContext()))
 				.globalOperationParameters(pars)
-				.host("www.wavab.cn")
+				.host("www.wavab.cn:30080")
 				.pathMapping("/");
 	}
 

@@ -1,7 +1,6 @@
 package com.qs.insurance.system.common.core.constant;
 
 /**
- * @author jhy
  * @date 2020/4/28
  */
 public interface CommonConstants {
@@ -83,7 +82,6 @@ public interface CommonConstants {
 	 */
 	String BUCKET_NAME = "rongdih";
 	/**
-	 * jhy 默认密码
 	 */
     CharSequence DEFAULT_PASSWORD = "123456";
 	/**

@@ -1,7 +1,6 @@
 package com.qs.insurance.system.common.core.constant;
 
 /**
- * @Author: jhy
  * @date 2020/4/28
  * @Description:
  */

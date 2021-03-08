@@ -16,7 +16,6 @@ import java.util.Map;
 /**
  * redis cache 扩展cache name自动化配置
  *
- * @author jhy
  * <p>
  * cachename = xx#ttl
  */

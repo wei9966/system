@@ -16,7 +16,6 @@ import java.util.Date;
 
 /**
  *
- * @Author jhy
  * @Date  2020/5/6 9:36 上午
  * @Description :自定义公共字段填充处理器
  *
@@ -26,7 +25,6 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
 
  /**
   *
-  * @Author jhy
   * @Date  2020/5/6 9:37 上午
   * @Description :插入操作自动填充
   *
@@ -67,7 +65,6 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
 
 /**
  *
- * @Author jhy
  * @Date  2020/5/6 9:36 上午
  * @Description :修改操作自动填充
  *

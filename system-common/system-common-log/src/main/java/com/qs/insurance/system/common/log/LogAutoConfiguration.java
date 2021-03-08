@@ -10,7 +10,6 @@ import org.springframework.scheduling.annotation.EnableAsync;
 
 /**
  *
- * @Author jhy
  * @Date  2020/5/5 7:20 下午
  * @Description :日志自动配置
  *

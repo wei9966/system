@@ -6,7 +6,6 @@ import cn.hutool.json.JSON;
 import cn.hutool.json.JSONUtil;
 
 /**
- * @author jhy
  * @program his
  * @description 正广兴api接口
  * @create 2020-04-09 14:10

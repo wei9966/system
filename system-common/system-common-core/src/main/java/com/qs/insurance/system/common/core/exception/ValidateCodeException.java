@@ -1,7 +1,6 @@
 package com.qs.insurance.system.common.core.exception;
 
 /**
- * @author jhy
  * @date 2020/4/28
  */
 public class ValidateCodeException extends Exception {

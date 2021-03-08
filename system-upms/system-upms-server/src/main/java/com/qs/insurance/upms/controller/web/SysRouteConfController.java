@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 /**
  *
- * @Author jhy
  * @Date  2020/5/6 2:58 下午
  * @Description :路由配置表
  *
