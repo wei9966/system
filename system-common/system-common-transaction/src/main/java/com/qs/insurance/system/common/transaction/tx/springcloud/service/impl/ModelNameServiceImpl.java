@@ -12,7 +12,6 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 /***
- * @author jhy
  * @since 4.1.0
  */
 @Service

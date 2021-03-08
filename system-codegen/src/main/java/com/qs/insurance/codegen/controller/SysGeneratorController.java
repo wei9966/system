@@ -51,7 +51,6 @@ public class SysGeneratorController {
 
 	/**
 	 * 生成代码
-	 * jhy
 	 */
 	@SneakyThrows
 	@PostMapping("/code")

@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * @Author jhy
  * @Date 2020/5/6 2:54 下午
  * @Description :路由配置表
  */

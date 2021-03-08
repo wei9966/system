@@ -6,7 +6,6 @@ import java.util.List;
 
 /**
  *
- * @Author jhy
  * @Date  2020/6/17 10:15 下午
  * @Description :表属性
  *

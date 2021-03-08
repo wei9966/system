@@ -9,7 +9,6 @@ import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.http.client.ClientHttpResponse;
 
 /** *
- * @author jhy
  * @since 4.1.0
  */
 @Slf4j

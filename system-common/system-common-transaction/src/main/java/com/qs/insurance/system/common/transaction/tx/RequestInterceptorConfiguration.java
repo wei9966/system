@@ -6,7 +6,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /** *
- * @author jhy
  * @since 4.1.0
  */
 @Configuration

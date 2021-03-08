@@ -7,7 +7,6 @@ import net.sf.jsqlparser.expression.LongValue;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * @author jhy
  * @date 2020/4/28
  * <p>
  * 租户维护处理器

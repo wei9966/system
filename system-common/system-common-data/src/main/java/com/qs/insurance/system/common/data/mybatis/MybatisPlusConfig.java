@@ -21,7 +21,6 @@ import java.util.Properties;
 
 /**
  * 
- * @Author jhy
  * @Date  2020/5/6 10:11 上午
  * @Description :
  * 

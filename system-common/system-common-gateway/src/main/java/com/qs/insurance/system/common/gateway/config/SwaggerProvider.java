@@ -1,7 +1,5 @@
 package com.qs.insurance.system.common.gateway.config;
 
-import com.qs.insurance.system.common.core.constant.SecurityConstants;
-import com.qs.insurance.system.common.dynamic.gateway.vo.RouteDefinitionVo;
 import lombok.AllArgsConstructor;
 import org.springframework.cloud.gateway.route.RouteDefinition;
 import org.springframework.cloud.gateway.route.RouteDefinitionRepository;
@@ -17,7 +15,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * @author jhy
  * 聚合接口文档注册，和zuul实现类似
  */
 @Component

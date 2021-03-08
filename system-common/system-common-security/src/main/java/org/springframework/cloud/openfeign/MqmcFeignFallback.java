@@ -15,7 +15,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 
 /**
- * @author jhy
  * <p>
  * fallback 代理处理
  */

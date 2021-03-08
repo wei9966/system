@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
 /**
- * @author jhy
  * <p>
  * HystrixFeignTargeter 配置
  */

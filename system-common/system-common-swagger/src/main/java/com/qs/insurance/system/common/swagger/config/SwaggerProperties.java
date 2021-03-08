@@ -10,7 +10,6 @@ import java.util.List;
 /**
  * SwaggerProperties
  *
- * @author: jhy
  * @date 2020/4/28
  */
 @Data

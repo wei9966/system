@@ -9,7 +9,6 @@
 //import org.springframework.stereotype.Service;
 //
 ///**
-// * @author jhy
 // * @date 2020/4/28
 // * 使用服务发现重写 Txmanager 获取规则
 // */

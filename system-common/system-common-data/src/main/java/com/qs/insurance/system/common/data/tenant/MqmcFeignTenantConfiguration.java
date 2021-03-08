@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @author jhy
  * @date 2020/4/28
  * feign 租户信息拦截
  */

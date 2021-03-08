@@ -6,7 +6,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 /**
- * @author jhy
  * @date 2020/4/28
  * 请求tx-manager接口实现
  */

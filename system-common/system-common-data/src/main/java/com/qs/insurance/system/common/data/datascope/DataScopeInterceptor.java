@@ -2,13 +2,8 @@ package com.qs.insurance.system.common.data.datascope;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.collection.CollectionUtil;
-import cn.hutool.db.Db;
-import cn.hutool.db.Entity;
 import com.baomidou.mybatisplus.core.toolkit.PluginUtils;
 import com.baomidou.mybatisplus.extension.handlers.AbstractSqlParserHandler;
-import com.qs.insurance.system.common.core.constant.SecurityConstants;
-import com.qs.insurance.system.common.core.exception.CheckedException;
-import com.qs.insurance.system.common.data.enums.DataScopeTypeEnum;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -22,12 +17,13 @@ import org.apache.ibatis.reflection.SystemMetaObject;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
 
 
 /**
  *
- * @Author jhy
  * @Date  2020/5/6 9:35 上午
  * @Description :mybatis 数据权限拦截器
  *

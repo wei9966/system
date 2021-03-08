@@ -24,7 +24,6 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author jhy
  * @date 2020/4/28
  * 验证码生成逻辑处理类
  */

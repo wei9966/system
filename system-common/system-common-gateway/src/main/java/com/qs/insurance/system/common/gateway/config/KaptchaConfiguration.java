@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Configuration;
 import java.util.Properties;
 
 /**
- * @author jhy
  * @date 2017-12-21 21:12:18
  */
 @Configuration

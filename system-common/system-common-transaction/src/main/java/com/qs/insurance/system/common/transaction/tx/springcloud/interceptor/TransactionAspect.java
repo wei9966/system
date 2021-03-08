@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 /**
  * LCN 事务拦截器
  *
- * @author jhy
  * @since 4.1.0
  */
 

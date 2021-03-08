@@ -10,7 +10,6 @@ import java.util.List;
 /**
  * 多租户配置
  *
- * @author jhy
  */
 @Data
 @Configuration

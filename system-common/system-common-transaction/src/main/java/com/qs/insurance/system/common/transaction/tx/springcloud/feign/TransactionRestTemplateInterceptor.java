@@ -6,7 +6,6 @@ import feign.RequestTemplate;
 import lombok.extern.slf4j.Slf4j;
 
 /** *
- * @author jhy
  * @since 4.1.0
  */
 @Slf4j

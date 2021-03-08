@@ -8,7 +8,6 @@ import feign.hystrix.SetterFactory;
 import org.springframework.lang.Nullable;
 
 /**
- * @author jhy
  * <p>
  * 注入默认的 fallbackFactory
  */

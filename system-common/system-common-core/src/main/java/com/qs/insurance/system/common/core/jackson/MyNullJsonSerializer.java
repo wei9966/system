@@ -8,7 +8,6 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import java.io.IOException;
 
 /**
- * @author jhy
  * @date 2020/4/28
  */
 public class MyNullJsonSerializer extends JsonSerializer {

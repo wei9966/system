@@ -22,7 +22,6 @@ import reactor.core.publisher.Mono;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author jhy
  * @description 短信验证码获取类
  * @create 2020-05-08 17:32
  **/
@@ -65,7 +64,6 @@ public class SmsCodeHandler implements HandlerFunction<ServerResponse> {
     }
 
     /**
-     * jhy 生成短信验证码
      * @return
      */
     private String getVerificationCode(){

@@ -12,7 +12,6 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * @author jhy
  * @since 4.1.0
  */
 

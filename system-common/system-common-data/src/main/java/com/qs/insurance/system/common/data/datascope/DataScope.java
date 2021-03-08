@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * @author jhy
  * @date 2020/4/28
  * 数据权限查询参数
  */

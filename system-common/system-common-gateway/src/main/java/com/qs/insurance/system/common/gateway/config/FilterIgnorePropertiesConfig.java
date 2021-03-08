@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author jhy
  * @date 2018/7/22
  * 网关不校验终端配置
  */

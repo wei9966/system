@@ -9,7 +9,6 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
 /**
- * @author jhy
  * @since 4.1.0
  */
 @Component

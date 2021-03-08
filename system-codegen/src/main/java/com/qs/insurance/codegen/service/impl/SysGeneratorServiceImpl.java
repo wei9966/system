@@ -19,7 +19,6 @@ import java.util.zip.ZipOutputStream;
 
 /**
  *
- * @Author jhy
  * @Date  2020/6/17 10:16 下午
  * @Description :代码生成器
  *
@@ -47,7 +46,6 @@ public class SysGeneratorServiceImpl implements SysGeneratorService {
 	/**
 	 * 生成代码
 	 *
-	 * @param genConfig jhy 生成配置
 	 * @return
 	 */
 	@Override

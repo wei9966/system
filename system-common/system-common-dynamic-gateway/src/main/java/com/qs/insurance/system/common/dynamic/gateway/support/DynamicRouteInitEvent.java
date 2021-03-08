@@ -3,7 +3,6 @@ package com.qs.insurance.system.common.dynamic.gateway.support;
 import org.springframework.context.ApplicationEvent;
 
 /**
- * @author jhy
  * @date 2018/11/5
  * <p>
  * 路由初始化事件

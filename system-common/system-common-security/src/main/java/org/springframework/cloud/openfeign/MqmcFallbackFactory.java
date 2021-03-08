@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.cglib.proxy.Enhancer;
 
 /**
- * @author jhy
+ * @author
  * <p>
  * 默认 Fallback，避免写过多fallback类
  */

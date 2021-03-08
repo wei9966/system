@@ -10,8 +10,8 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * @author jhy
- * @date 2020/4/28
+ * @author
+ * h@date 2020/4/28
  */
 public class MyBeanSerializerModifier extends BeanSerializerModifier {
     private JsonSerializer _nullArrayJsonSerializer = new MyNullArrayJsonSerializer();
