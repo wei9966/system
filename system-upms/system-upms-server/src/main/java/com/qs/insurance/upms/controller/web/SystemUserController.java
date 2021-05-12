@@ -1,5 +1,6 @@
 package com.qs.insurance.upms.controller.web;
 
+import com.alibaba.nacos.common.util.Md5Utils;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -106,6 +107,7 @@ public class SystemUserController {
   @RequiresPermissions("sys:user:save")
   public R save(@RequestBody SystemUser user){
 //    user.setCreateUserId(getUserId());
+    user.setPassword(Md5Utils.getMD5(user.getPassword().getBytes()));
     systemUserService.save(user);
     sysUserRoleService.saveOrUpdate(user.getId(), user.getRoleIdList());
     return new R<>(true);
@@ -119,6 +121,7 @@ public class SystemUserController {
   @RequiresPermissions("sys:user:update")
   public R update(@RequestBody SystemUser user){
     //保存用户与角色关系
+    user.setPassword(Md5Utils.getMD5(user.getPassword().getBytes()));
     sysUserRoleService.saveOrUpdate(user.getId(), user.getRoleIdList());
     return new R<>(systemUserService.updateById(user));
   }

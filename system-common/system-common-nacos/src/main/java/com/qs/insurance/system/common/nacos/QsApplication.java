@@ -102,9 +102,17 @@ public class QsApplication {
 		//设置是否可覆盖bean
 		props.setProperty("spring.main.allow-bean-definition-overriding", "true");
 		//设置nacos注册和配置相关
-		props.setProperty("spring.cloud.nacos.discovery.server-addr", NacosConstant.NACOS_ADDR);
+		if (profile.equals(AppConstant.DEV_CODE)){
+			props.setProperty("spring.cloud.nacos.discovery.server-addr", NacosConstant.NACOS_ADDR_DEV);
+			props.setProperty("spring.cloud.nacos.config.server-addr", NacosConstant.NACOS_ADDR_DEV);
+		}else{
+			props.setProperty("spring.cloud.nacos.discovery.server-addr", NacosConstant.NACOS_ADDR);
+			props.setProperty("spring.cloud.nacos.config.server-addr", NacosConstant.NACOS_ADDR);
+		}
+
+
 		props.setProperty("spring.cloud.nacos.discovery.register-enabled", "true");
-		props.setProperty("spring.cloud.nacos.config.server-addr", NacosConstant.NACOS_ADDR);
+
 		props.setProperty("spring.cloud.nacos.config.shared-dataids", "system-config.yml");
 		props.setProperty("spring.cloud.nacos.config.refreshable-dataids", "system-config.yml");
 		props.setProperty("spring.cloud.nacos.config.prefix",appName);

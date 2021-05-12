@@ -1,5 +1,6 @@
 package com.qs.insurance.upms.service.impl;
 
+import com.alibaba.nacos.common.util.Md5Utils;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -35,7 +36,9 @@ public class SystemUserServiceImpl extends ServiceImpl<SystemUserMapper, SystemU
             throw new RuntimeException("账号或手机号不存在");
         }
         //TODO 后续加上密码加密校验 暂定MD5
-        if (!password.equals(systemUser.getPassword())){
+        String md51 = Md5Utils.getMD5(password.getBytes());
+        System.out.println("md"+md51+"\t"+systemUser.getPassword());
+        if (!md51.equals(systemUser.getPassword())){
             throw new RuntimeException("用户名或密码错误");
         }
      return    sysUserTokenService.createToken(systemUser.getId());

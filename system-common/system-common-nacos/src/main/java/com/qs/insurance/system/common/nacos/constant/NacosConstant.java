@@ -28,6 +28,11 @@ public interface NacosConstant {
 	String NACOS_ADDR = "127.0.0.1:8848";
 
 	/**
+	 *
+	 */
+	String NACOS_ADDR_DEV = "a.wavab.cn:28848";
+
+	/**
 	 * nacos 配置前缀
 	 */
 	String NACOS_CONFIG_PREFIX = "system";

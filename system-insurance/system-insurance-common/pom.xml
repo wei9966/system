@@ -25,6 +25,10 @@
         </dependency>
         <dependency>
             <groupId>com.qs.insurance</groupId>
+            <artifactId>system-common-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.qs.insurance</groupId>
             <artifactId>system-common-swagger</artifactId>
         </dependency>
         <dependency>
