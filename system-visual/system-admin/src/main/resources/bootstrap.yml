@@ -5,10 +5,25 @@ spring:
         enabled: true
         username: admin
         password: admin
+        instance:
+          service-base-url: localhost:8080
   security:
     user:
       name: admin
       password: admin
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.56.10:8848
+        register-enabled: true
+        namespace: 78493cf7-8186-4d81-8df4-8b3daa613e56
+      config:
+        server-addr: 192.168.56.10:8848
+        shared-dataids: system-config.yml
+        refreshable-dataids: system-config.yml
+        file-extension: yml
+        namespace: 78493cf7-8186-4d81-8df4-8b3daa613e56
+        group: SYSTEM_DEV
 management:
   endpoints:
     web:
@@ -18,3 +33,5 @@ management:
   endpoint:
     health:
       show-details: always
+    logfile:
+      external-file: D:/system-admin.log

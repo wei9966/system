@@ -34,6 +34,12 @@ public class LauncherServiceImpl implements LauncherService {
 		props.setProperty("spring.cloud.nacos.config.server-addr", "192.168.56.10:8848");
 		props.setProperty("spring.cloud.nacos.config.namespace", "78493cf7-8186-4d81-8df4-8b3daa613e56");
 		props.setProperty("spring.cloud.nacos.discovery.namespace", "78493cf7-8186-4d81-8df4-8b3daa613e56");
+		//暴露端口 方便监控
+		props.setProperty("management.endpoints.web.exposure.include", "*");
+		props.setProperty("management.endpoint.health.show-details", "ALWAYS");
+		//设置日志
+		props.setProperty("management.endpoint.logfile.external-file:", "D:/admin/"+appName+".log");
+		//设置nacos分组
 		props.setProperty("spring.cloud.nacos.discovery.group", "SYSTEM_DEV");
 		props.setProperty("spring.cloud.nacos.config.group", "SYSTEM_DEV");
 		props.setProperty("rocketmq.name-server", "192.168.56.10:9876");
